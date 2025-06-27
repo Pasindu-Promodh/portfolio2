@@ -15,30 +15,27 @@ import {
   createTheme,
   IconButton,
 } from "@mui/material";
-import {
-  Download,
-  Code,
-  Email,
-} from "@mui/icons-material";
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import { Download, Code, Email } from "@mui/icons-material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import { useNavigate } from "react-router-dom";
 
 // Define a custom Material-UI theme
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#6a11cb', // A vibrant purple
-      light: '#8e2de2',
-      dark: '#4f0a9f',
+      main: "#6a11cb", // A vibrant purple
+      light: "#8e2de2",
+      dark: "#4f0a9f",
     },
     secondary: {
-      main: '#2575fc', // A bright blue
-      light: '#42a5f5',
-      dark: '#1a54b9',
+      main: "#2575fc", // A bright blue
+      light: "#42a5f5",
+      dark: "#1a54b9",
     },
   },
   typography: {
-    fontFamily: 'Inter, sans-serif',
+    fontFamily: "Inter, sans-serif",
   },
   components: {
     MuiButton: {
@@ -158,46 +155,16 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     setLoaded(true);
+    // Removed all document.body/documentElement style manipulations and scroll listeners
+    // Relying on default browser scrolling and responsive padding/min-height for layout.
+  }, []); // Empty dependency array means this effect runs only once on mount
 
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  const navigate = useNavigate();
 
-    document.body.style.overflow = "hidden";
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${scrollTop}px`;
-    document.body.style.left = `-${scrollLeft}px`;
-    document.body.style.width = "100%";
-    document.body.style.height = "100%";
-    document.documentElement.style.overflow = "hidden";
-
-    const preventScroll = (e: Event) => {
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
-    };
-
-    window.addEventListener("wheel", preventScroll, { passive: false });
-    window.addEventListener("touchmove", preventScroll, { passive: false });
-    window.addEventListener("keydown", (e) => {
-      if ([32, 33, 34, 35, 36, 37, 38, 39, 40].includes(e.keyCode)) {
-        e.preventDefault();
-      }
-    });
-
-    return () => {
-      document.body.style.overflow = "";
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.width = "";
-      document.body.style.height = "";
-      document.documentElement.style.overflow = "";
-      window.scrollTo(scrollLeft, scrollTop);
-      window.removeEventListener("wheel", preventScroll);
-      window.removeEventListener("touchmove", preventScroll);
-    };
-  }, []);
-
+  const gotoPage = (page: string) => {
+    navigate("/" + page);
+  };
+  
   const particles = Array.from({ length: isMobile ? 20 : 50 }, (_, i) => (
     <FloatingElement
       key={i}
@@ -221,15 +188,16 @@ const Home: React.FC = () => {
     <ThemeProvider theme={theme}>
       <Box
         sx={{
-          minHeight: "100vh",
+          minHeight: "100vh", // Still attempt to take full viewport height
           width: "100vw",
           display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          alignItems: "center", // Vertically centers content if it fits within viewport
+          justifyContent: "center", // Horizontally centers content
           px: 0,
           boxSizing: "border-box",
           position: "relative",
-          overflow: "hidden",
+          // Allow overflow for natural scrolling if content exceeds viewport
+          overflow: "auto", // Changed from "hidden" to "auto"
         }}
       >
         <AnimatedBackground />
@@ -241,6 +209,9 @@ const Home: React.FC = () => {
             position: "relative",
             zIndex: 1,
             px: { xs: 2, sm: 3, md: 4 },
+            // Add more padding-top and padding-bottom specifically for mobile (xs)
+            // This ensures content isn't flush with browser toolbars on small screens
+            // py: { xs: 8, sm: 8 } was already here, but let's re-emphasize it.
           }}
         >
           <Box
@@ -249,8 +220,9 @@ const Home: React.FC = () => {
               flexDirection: { xs: "column", md: "row" },
               alignItems: "center",
               justifyContent: "center",
-              gap: { xs: 6, md: 10 }, // Increased gap for desktop view
-              py: { xs: 6, sm: 8 },
+              gap: { xs: 6, md: 10 },
+              // Increased vertical padding for xs (mobile) screens to ensure content visibility
+              py: { xs: 10, sm: 8, md: 8 }, // Increased `py` for `xs`
               mx: "auto",
             }}
           >
@@ -265,7 +237,14 @@ const Home: React.FC = () => {
                 }}
               >
                 <Slide direction="right" in={loaded} timeout={800}>
-                  <Typography variant="h6" sx={{ color: "rgba(255, 255, 255, 0.8)", fontWeight: 300, mb: 1.5 }}> {/* Reduced mb slightly */}
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      color: "rgba(255, 255, 255, 0.8)",
+                      fontWeight: 300,
+                      mb: 1.5,
+                    }}
+                  >
                     HELLO, I'M
                   </Typography>
                 </Slide>
@@ -275,7 +254,7 @@ const Home: React.FC = () => {
                     sx={{
                       color: "white",
                       fontWeight: 700,
-                      mb: 1.5, // Reduced mb slightly
+                      mb: 1.5,
                       background: `linear-gradient(45deg, ${currentTheme.palette.primary.light}, ${currentTheme.palette.secondary.light})`,
                       backgroundClip: "text",
                       WebkitBackgroundClip: "text",
@@ -283,7 +262,7 @@ const Home: React.FC = () => {
                       fontSize: { xs: "2.5rem", sm: "3rem", md: "3.5rem" },
                     }}
                   >
-                    Your Name
+                    Pasindu Promod
                   </Typography>
                 </Slide>
                 <Slide direction="right" in={loaded} timeout={1200}>
@@ -292,7 +271,7 @@ const Home: React.FC = () => {
                     sx={{
                       color: "rgba(255, 255, 255, 0.9)",
                       fontWeight: 400,
-                      mb: 3, // Kept this as a clear break
+                      mb: 3,
                       fontSize: { xs: "1.25rem", sm: "1.5rem", md: "2rem" },
                     }}
                   >
@@ -304,15 +283,16 @@ const Home: React.FC = () => {
                     variant="body1"
                     sx={{
                       color: "rgba(255, 255, 255, 0.8)",
-                      mb: 3, // Reduced mb slightly to bring social links closer
+                      mb: 3,
                       lineHeight: 1.8,
                       maxWidth: { xs: "100%", sm: "500px", md: "unset" },
                       mx: { xs: "auto", md: "unset" },
                       fontSize: { xs: "0.9rem", sm: "1rem" },
                     }}
                   >
-                    Passionate about creating immersive gaming experiences and robust software solutions. Specialized in
-                    Unity, React, and modern web technologies.
+                    Passionate about creating immersive gaming experiences and
+                    robust software solutions. Specialized in Unity, React, and
+                    modern web technologies.
                   </Typography>
                 </Slide>
 
@@ -320,7 +300,7 @@ const Home: React.FC = () => {
                 <Slide direction="up" in={loaded} timeout={1500}>
                   <Box
                     sx={{
-                      mb: 4, // Ample space below social icons before buttons
+                      mb: 4,
                       display: "flex",
                       gap: 2,
                       justifyContent: { xs: "center", md: "flex-start" },
@@ -355,7 +335,9 @@ const Home: React.FC = () => {
                         },
                       }}
                     >
-                      <GitHubIcon sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }} />
+                      <GitHubIcon
+                        sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }}
+                      />
                     </IconButton>
                     <IconButton
                       aria-label="linkedin"
@@ -370,7 +352,9 @@ const Home: React.FC = () => {
                         },
                       }}
                     >
-                      <LinkedInIcon sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }} />
+                      <LinkedInIcon
+                        sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }}
+                      />
                     </IconButton>
                   </Box>
                 </Slide>
@@ -387,10 +371,18 @@ const Home: React.FC = () => {
                       width: "100%",
                     }}
                   >
-                    <GlowButton variant="primary" startIcon={<Download />} onClick={handleResumeClick}>
+                    <GlowButton
+                      variant="primary"
+                      startIcon={<Download />}
+                      onClick={handleResumeClick}
+                    >
                       Download Resume
                     </GlowButton>
-                    <GlowButton variant="secondary" startIcon={<Code />} onClick={handleProjectsClick}>
+                    <GlowButton
+                      variant="secondary"
+                      startIcon={<Code />}
+                      onClick={() => gotoPage("projects")}
+                    >
                       View Projects
                     </GlowButton>
                   </Box>
@@ -400,15 +392,24 @@ const Home: React.FC = () => {
 
             {/* Right Section: Profile Card */}
             <Fade in={loaded} timeout={1200}>
-              <Box sx={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <Box
+                sx={{
+                  flex: 1,
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <Slide direction="left" in={loaded} timeout={1000}>
                   <GlassCard>
-                    <Box sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "center",
-                      textAlign: "center"
-                    }}>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        textAlign: "center",
+                      }}
+                    >
                       <Avatar
                         sx={{
                           width: { xs: 120, sm: 150, md: 200 },
@@ -423,11 +424,21 @@ const Home: React.FC = () => {
                       >
                         YN
                       </Avatar>
-                      <Typography variant="h6" sx={{ color: "white", fontWeight: 600, mb: 2 }}>
+                      <Typography
+                        variant="h6"
+                        sx={{ color: "white", fontWeight: 600, mb: 2 }}
+                      >
                         Ready to Create
                       </Typography>
-                      <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.8)", lineHeight: 1.6 }}>
-                        Let's build something amazing together. From interactive games to scalable web applications.
+                      <Typography
+                        variant="body2"
+                        sx={{
+                          color: "rgba(255, 255, 255, 0.8)",
+                          lineHeight: 1.6,
+                        }}
+                      >
+                        Let's build something amazing together. From interactive
+                        games to scalable web applications.
                       </Typography>
                     </Box>
                   </GlassCard>
@@ -441,9 +452,4 @@ const Home: React.FC = () => {
   );
 };
 
-// Main App component that renders the Home component
-function App() {
-  return <Home />;
-}
-
-export default App;
+export default Home;
