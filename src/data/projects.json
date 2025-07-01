@@ -90,5 +90,21 @@
     "techStack": ["Flutter", "Dart", "Firestore"],
     "status": "In Development",
     "category": "Mobile Apps"
+  },
+  {
+    "id": 7,
+    "name": "Galactic Explorer",
+    "description": "A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation.",
+    "image": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=800",
+      "https://images.unsplash.com/photo-1507499739999-097706ad8914?q=80&w=800"
+    ],
+    "videos": [
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    ],
+    "techStack": ["Unity", "C#", "Blender"],
+    "status": "Completed",
+    "category": "Games"
   }
 ]
