@@ -1,0 +1,94 @@
+[
+  {
+    "id": 1,
+    "name": "Galactic Explorer",
+    "description": "A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation.",
+    "image": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=800",
+      "https://images.unsplash.com/photo-1507499739999-097706ad8914?q=80&w=800"
+    ],
+    "videos": [
+      "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+    ],
+    "techStack": ["Unity", "C#", "Blender"],
+    "status": "Completed",
+    "category": "Games"
+  },
+  {
+    "id": 2,
+    "name": "TaskFlow Mobile",
+    "description": "Cross-platform mobile app for task management and collaboration.",
+    "image": "https://images.unsplash.com/photo-1516321310762-4794372e7c9e?q=80&w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1551288049-b1b3c96b1b43?q=80&w=800",
+      "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?q=80&w=800"
+    ],
+    "videos": [
+      "https://archive.org/download/SampleMobileAppDemo/SampleMobileAppDemo_720p.mp4"
+    ],
+    "techStack": ["React Native", "Firebase", "Node.js"],
+    "status": "Completed",
+    "category": "Mobile Apps"
+  },
+  {
+    "id": 3,
+    "name": "Portfolio V2",
+    "description": "My personal portfolio website showcasing projects and skills.",
+    "image": "https://images.unsplash.com/photo-1516321310762-4794372e7c9e?q=80&w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df7a5?q=80&w=800",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800"
+    ],
+    "videos": [],
+    "techStack": ["React", "Material-UI", "Vite"],
+    "status": "Completed",
+    "category": "Web Apps"
+  },
+  {
+    "id": 4,
+    "name": "Cyberpunk City Builder",
+    "description": "A city-building simulation game set in a dystopian future.",
+    "image": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?q=80&w=800",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=800"
+    ],
+    "videos": [
+      "https://archive.org/download/CyberpunkCityFlythrough/CyberpunkCityFlythrough_720p.mp4"
+    ],
+    "techStack": ["Unreal Engine 5", "C++"],
+    "status": "In Development",
+    "category": "Games"
+  },
+  {
+    "id": 5,
+    "name": "E-commerce Backend",
+    "description": "Robust backend services for an online retail platform.",
+    "image": "https://images.unsplash.com/photo-1516321310762-4794372e7c9e?q=80&w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1451187580459-43490279c0b2?q=80&w=800",
+      "https://images.unsplash.com/photo-1516321310762-4794372e7c9e?q=80&w=800"
+    ],
+    "videos": [],
+    "techStack": ["Node.js", "Express", "MongoDB"],
+    "status": "Completed",
+    "category": "Web Apps"
+  },
+  {
+    "id": 6,
+    "name": "Fitness Tracker App",
+    "description": "Track your workouts, nutrition, and progress with this intuitive app.",
+    "image": "https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?q=80&w=800",
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800",
+      "https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800"
+    ],
+    "videos": [
+      "https://archive.org/download/FitnessAppDemo/FitnessAppDemo_720p.mp4"
+    ],
+    "techStack": ["Flutter", "Dart", "Firestore"],
+    "status": "In Development",
+    "category": "Mobile Apps"
+  }
+]
