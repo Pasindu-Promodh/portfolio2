@@ -1,6 +1,6 @@
 // LightboxMediaViewer.tsx
-import React from "react";
-import { Box, IconButton, Fade } from "@mui/material";
+import React, { useEffect } from "react";
+import { Box, IconButton, Fade, Typography } from "@mui/material";
 import { Close, ArrowBackIosNew, ArrowForwardIos } from "@mui/icons-material";
 
 interface LightboxMediaViewerProps {
@@ -25,6 +25,18 @@ const LightboxMediaViewer: React.FC<LightboxMediaViewerProps> = ({
   if (!open) return null;
 
   const currentMedia = media[currentIndex];
+
+  useEffect(() => {
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (!open) return;
+    if (e.key === "ArrowLeft") onPrev();
+    if (e.key === "ArrowRight") onNext();
+    if (e.key === "Escape") onClose();
+  };
+
+  window.addEventListener("keydown", handleKeyDown);
+  return () => window.removeEventListener("keydown", handleKeyDown);
+}, [open, onPrev, onNext, onClose]);
 
   return (
     <Fade in={open}>
@@ -56,6 +68,8 @@ const LightboxMediaViewer: React.FC<LightboxMediaViewerProps> = ({
           <ArrowBackIosNew />
         </IconButton>
 
+        
+
         {isVideo(currentMedia) ? (
           <Box
             component="video"
@@ -82,6 +96,25 @@ const LightboxMediaViewer: React.FC<LightboxMediaViewerProps> = ({
             }}
           />
         )}
+
+        <Typography
+          variant="body2"
+          sx={{
+            position: "absolute",
+            top: 20,
+            left: "50%",
+            transform: "translateX(-50%)",
+            color: "white",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            borderRadius: "20px",
+            px: 2,
+            py: 0.5,
+            fontWeight: 500,
+            zIndex: 10,
+          }}
+        >
+          {currentIndex + 1} / {media.length}
+        </Typography>
 
         <IconButton
           onClick={onNext}

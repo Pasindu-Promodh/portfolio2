@@ -8,10 +8,18 @@ import {
   Slide,
   Fade,
   useTheme,
+  IconButton,
 } from "@mui/material";
-import { ArrowBack } from "@mui/icons-material";
+import {
+  ArrowBack,
+  ArrowBackIos,
+  ArrowForwardIos,
+  Close,
+} from "@mui/icons-material";
 import { GlowButton } from "../theme";
 import LightboxMediaViewer from "../components/LightboxMediaViewer";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LaunchIcon from "@mui/icons-material/Launch";
 
 //data
 import projects from "../data/projects.json";
@@ -22,12 +30,12 @@ const ProjectPage = () => {
   const currentTheme = useTheme();
   const [loaded, setLoaded] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const project = projects.find((p) => p.id.toString() === id);
 
   useEffect(() => {
-    // const timer = setTimeout(() => setLoaded(true), 50);
-    // return () => clearTimeout(timer);
     window.scrollTo(0, 0);
     setLoaded(true);
   }, []);
@@ -54,18 +62,46 @@ const ProjectPage = () => {
     ...(project.videos || []),
   ];
 
-  const handlePrev = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex(
-        (lightboxIndex - 1 + mediaList.length) % mediaList.length
-      );
+  // Handle escape key to close fullscreen and arrow keys for navigation
+  useEffect(() => {
+    const handleKeydown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeFullscreen();
+      } else if (event.key === "ArrowLeft") {
+        goToPrevImage();
+      } else if (event.key === "ArrowRight") {
+        goToNextImage();
+      }
+    };
+
+    if (fullscreenImage) {
+      document.addEventListener("keydown", handleKeydown);
+      return () => document.removeEventListener("keydown", handleKeydown);
     }
+  }, [fullscreenImage, currentImageIndex, mediaList]);
+
+  const closeFullscreen = () => {
+    setFullscreenImage(null);
   };
 
-  const handleNext = () => {
-    if (lightboxIndex !== null) {
-      setLightboxIndex((lightboxIndex + 1) % mediaList.length);
-    }
+  const goToPrevImage = () => {
+    const prevIndex =
+      currentImageIndex === 0 ? mediaList.length - 1 : currentImageIndex - 1;
+    setCurrentImageIndex(prevIndex);
+    setFullscreenImage(mediaList[prevIndex]);
+  };
+
+  const goToNextImage = () => {
+    const nextIndex =
+      currentImageIndex === mediaList.length - 1 ? 0 : currentImageIndex + 1;
+    setCurrentImageIndex(nextIndex);
+    setFullscreenImage(mediaList[nextIndex]);
+  };
+
+  const openFullscreen = (imageSrc: string) => {
+    const imageIndex = mediaList.findIndex((media) => media === imageSrc);
+    setCurrentImageIndex(imageIndex);
+    setFullscreenImage(imageSrc);
   };
 
   return (
@@ -91,7 +127,6 @@ const ProjectPage = () => {
               }}
             >
               <GlowButton
-                // variant="secondary"
                 glowVariant="secondary"
                 startIcon={<ArrowBack />}
                 onClick={() => gotoPage("/projects")}
@@ -132,7 +167,7 @@ const ProjectPage = () => {
                   mb: 4,
                   cursor: "pointer",
                 }}
-                onClick={() => setLightboxIndex(0)}
+                onClick={() => openFullscreen(project.image)}
               >
                 <Box
                   component="img"
@@ -165,7 +200,7 @@ const ProjectPage = () => {
                     key={index}
                     component={media.endsWith(".mp4") ? "video" : "img"}
                     src={media}
-                    onClick={() => setLightboxIndex(index)}
+                    onClick={() => openFullscreen(project.image)}
                     sx={{
                       width: 100,
                       height: 60,
@@ -189,7 +224,6 @@ const ProjectPage = () => {
 
           <Slide direction="up" in={loaded} timeout={1000}>
             <Box>
-              {/* <Fade in={loaded} timeout={1000}> */}
               <Typography
                 variant="body1"
                 sx={{
@@ -199,18 +233,33 @@ const ProjectPage = () => {
                   color: "rgba(255, 255, 255, 0.9)",
                 }}
               >
-                {project.description}
+                {project.longDescription}
               </Typography>
-              {/* </Fade> */}
 
-              {/* <Fade in={loaded} timeout={1200}> */}
+              {/* Features List */}
+              {project.features && project.features.length > 0 && (
+                <Box sx={{ mb: 4 }}>
+                  <Box
+                    component="ul"
+                    sx={{
+                      textAlign: "left",
+                      display: "inline-block",
+                      pl: 2,
+                      color: "rgba(255,255,255,0.9)",
+                    }}
+                  >
+                    {project.features.map((feature, index) => (
+                      <li key={index}>
+                        <Typography variant="body2" sx={{ mb: 0.5 }}>
+                          {feature}
+                        </Typography>
+                      </li>
+                    ))}
+                  </Box>
+                </Box>
+              )}
+
               <Box sx={{ mb: 4 }}>
-                <Typography
-                  variant="h6"
-                  sx={{ mb: 1, fontWeight: 600, color: "white" }}
-                >
-                  Tech Stack
-                </Typography>
                 <Box
                   sx={{
                     display: "flex",
@@ -233,9 +282,39 @@ const ProjectPage = () => {
                   ))}
                 </Box>
               </Box>
-              {/* </Fade> */}
 
-              {/* <Fade in={loaded} timeout={1300}> */}
+              {/* Links */}
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: 2,
+                  mt: 2,
+                  mb: 4,
+                }}
+              >
+                {project.github && (
+                  <GlowButton
+                    glowVariant="primary"
+                    startIcon={<GitHubIcon />}
+                    sx={{ px: 3 }}
+                    onClick={() => window.open(project.github, "_blank")}
+                  >
+                    GitHub
+                  </GlowButton>
+                )}
+                {project.preview && (
+                  <GlowButton
+                    glowVariant="secondary"
+                    startIcon={<LaunchIcon />}
+                    sx={{ px: 3 }}
+                    onClick={() => window.open(project.preview, "_blank")}
+                  >
+                    Preview
+                  </GlowButton>
+                )}
+              </Box>
+
               <Typography
                 variant="body2"
                 sx={{
@@ -246,20 +325,140 @@ const ProjectPage = () => {
               >
                 Status: <strong>{project.status}</strong>
               </Typography>
-              {/* </Fade> */}
             </Box>
           </Slide>
         </Box>
       </Fade>
 
-      <LightboxMediaViewer
-        media={mediaList}
-        open={lightboxIndex !== null}
-        currentIndex={lightboxIndex ?? 0}
-        onClose={() => setLightboxIndex(null)}
-        onPrev={handlePrev}
-        onNext={handleNext}
-      />
+      {/* Fullscreen Image Modal */}
+      {fullscreenImage && (
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+            bgcolor: "rgba(0, 0, 0, 1)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999,
+            cursor: "pointer",
+          }}
+          onClick={closeFullscreen}
+        >
+          {/* Close Button */}
+          <IconButton
+            sx={{
+              position: "absolute",
+              top: 20,
+              right: 20,
+              color: "white",
+              bgcolor: "rgba(0, 0, 0, 0.5)",
+              "&:hover": { bgcolor: "rgba(0, 0, 0, 0.7)" },
+              zIndex: 10001,
+            }}
+            onClick={closeFullscreen}
+          >
+            <Close />
+          </IconButton>
+
+          {/* Previous Button */}
+          {mediaList.length > 1 && (
+            <IconButton
+              sx={{
+                position: "absolute",
+                left: 20,
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "white",
+                bgcolor: "rgba(0, 0, 0, 0.5)",
+                "&:hover": { bgcolor: "rgba(0, 0, 0, 0.7)" },
+                zIndex: 10001,
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToPrevImage();
+              }}
+            >
+              <ArrowBackIos />
+            </IconButton>
+          )}
+
+          {/* Next Button */}
+          {mediaList.length > 1 && (
+            <IconButton
+              sx={{
+                position: "absolute",
+                right: 20,
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "white",
+                bgcolor: "rgba(0, 0, 0, 0.5)",
+                "&:hover": { bgcolor: "rgba(0, 0, 0, 0.7)" },
+                zIndex: 10001,
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                goToNextImage();
+              }}
+            >
+              <ArrowForwardIos />
+            </IconButton>
+          )}
+
+          {/* Main Image */}
+          {fullscreenImage.endsWith(".mp4") ? (
+            <Box
+              component="video"
+              src={fullscreenImage}
+              controls
+              autoPlay
+              sx={{
+                maxWidth: "90vw",
+                maxHeight: "90vh",
+                backgroundColor: "black",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          ) : (
+            <Box
+              component="img"
+              src={fullscreenImage}
+              alt="Fullscreen view"
+              sx={{
+                maxWidth: "90vw",
+                maxHeight: "90vh",
+                objectFit: "contain",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          )}
+
+          {/* Image Counter */}
+          {mediaList.length > 1 && (
+            <Box
+              sx={{
+                position: "absolute",
+                bottom: 20,
+                left: "50%",
+                transform: "translateX(-50%)",
+                color: "white",
+                bgcolor: "rgba(0, 0, 0, 0.5)",
+                px: 2,
+                py: 1,
+                borderRadius: 1,
+                zIndex: 10001,
+              }}
+            >
+              <Typography variant="body2">
+                {currentImageIndex + 1} / {mediaList.length}
+              </Typography>
+            </Box>
+          )}
+        </Box>
+      )}
     </Container>
   );
 };
