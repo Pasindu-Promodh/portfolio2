@@ -124,9 +124,8 @@ const HomePage: React.FC = () => {
                   fontSize: { xs: "0.9rem", sm: "1rem" },
                 }}
               >
-                Passionate about creating immersive gaming experiences and
-                robust software solutions. Specialized in Unity, React, and
-                modern web technologies.
+                Passionate about crafting immersive gaming experiences,
+                intuitive mobile applications, and powerful web solutions.
               </Typography>
             </Slide>
 
