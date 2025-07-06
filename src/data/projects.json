@@ -2,50 +2,93 @@
   {
     "id": 1,
     "name": "Drone Takedown",
-    "description": "A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation. A 3D space exploration game with procedural generation.",
-    "longDescription": "Drone Takedown is a thrilling 3D space exploration game that immerses players in a procedurally generated universe. Players pilot advanced drones to complete missions, gather resources, and engage in epic space battles. The game features stunning graphics, dynamic environments, and an engaging storyline that evolves with each playthrough.",
+    "description": "A 2D Meme game created using Construct 2.",
+    "longDescription": "A humorous 2D web game built using Construct 2. Designed to run smoothly in mobile browsers and desktop environments, the game features meme-style graphics and simple but engaging gameplay. Players must shoot down flying drones in a fast-paced environment, with smooth animations, responsive controls, and entertaining sound effects that amplify the chaotic, arcade-like experience. The game supports both touch and mouse inputs, runs in portrait mode, and leverages WebGL for hardware-accelerated rendering, delivering a fluid and visually appealing performance across devices.",
     "image": "https://pasindu-promodh.github.io/Drone-Takedown/thumbnail2.webp",
-    "images": [],
+    "images": [
+      "https://github.com/Pasindu-Promodh/Drone-Takedown/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Drone-Takedown/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Drone-Takedown/blob/main/Screenshots/image_3.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Drone-Takedown/blob/main/Screenshots/image_4.PNG?raw=true"
+    ],
     "videos": [],
-    "techStack": ["Construct 2"],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
     "status": "Completed",
-    "category": "Games"
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Drone-Takedown",
+    "preview": "https://pasindu-promodh.github.io/Drone-Takedown/"
   },
   {
     "id": 2,
     "name": "Vintage Villa",
     "description": "A responsive website for a luxury guest house in Kandy, Sri Lanka. Features intuitive navigation, booking system, and SEO optimization for a seamless user experience.",
     "longDescription": "A visually appealing and functional online presence for a premier guest house in Kandy, Sri Lanka. The website was designed to reflect the property’s luxurious and serene ambiance, blending vintage charm with modern functionality. A fully responsive site that ensures an optimal user experience across desktops, tablets, and mobile devices. Key features include an intuitive navigation system, a streamlined booking interface, and high-quality visuals to highlight the property’s unique offerings, such as spacious rooms and scenic surroundings. The site was optimized for search engine visibility using best practices, including clean code and compatibility with SEO tools. Also integrated dynamic elements like image galleries and contact forms to enhance user engagement and drive bookings.",
-    "image": "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/image_1.PNG?raw=true",
+    "image": "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/Screenshots/image_1.PNG?raw=true",
     "images": [
-      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/image_2.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/image_3.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/image_4.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/image_5.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/image_6.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/image_7.PNG?raw=true"
+      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/Screenshots/image_3.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/Screenshots/image_4.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/Screenshots/image_5.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/Screenshots/image_6.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/Screenshots/image_7.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa/blob/main/Screenshots/image_8.PNG?raw=true"
     ],
     "videos": [],
     "techStack": ["React", "JavaScript", "HTML", "CSS", "TypeScript", "MUI"],
     "status": "Completed",
     "category": "Web Apps",
-    "features": ["Intuitive navigation system", "Streamlined booking interface", "High-quality visuals", "Google map integration", "Gallery", "Mobile responsive"],
+    "features": [
+      "Intuitive navigation system",
+      "Streamlined booking interface",
+      "High-quality visuals",
+      "Google map integration",
+      "Gallery",
+      "Mobile responsive"
+    ],
     "github": "https://github.com/Pasindu-Promodh/Vintage-Villa",
     "preview": "https://vintagevilla.lk/"
   },
   {
     "id": 3,
-    "name": "Portfolio V2",
-    "description": "My personal portfolio website showcasing projects and skills.",
-    "image": "https://images.unsplash.com/photo-1516321310762-4794372e7c9e?q=80&w=800",
+    "name": "Vintage Villa Admin Dashboard",
+    "description": "An admin dashboard for Vintage Villa's website with secure login, booking management, gallery uploads, and content control, optimized for ease of use and mobile responsiveness.",
+    "longDescription": "This admin dashboard is designed to efficiently manage the Vintage Villa website, a luxury guest house based in Kandy, Sri Lanka. It features a secure login system that allows administrators easy and safe access. The booking management module enables admins to view, edit, and delete bookings, ensuring smooth day-to-day operations. A built-in media management system allows for seamless image uploads and organization, keeping the site’s gallery up-to-date and visually appealing. Administrators can effortlessly update content such as room details without requiring technical knowledge. Optimized for mobile responsiveness, the interface adapts fluidly across desktops, tablets, and smartphones—empowering admins to manage the site from anywhere. Designed with usability and efficiency in mind, this dashboard blends simplicity with powerful features to ensure Vintage Villa’s digital presence remains elegant, current, and functional.",
+    "image": "https://github.com/Pasindu-Promodh/Vintage-Villa-Admin/blob/main/Screenshots/image_1.PNG?raw=true",
     "images": [
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df7a5?q=80&w=800",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800"
+      "https://github.com/Pasindu-Promodh/Vintage-Villa-Admin/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa-Admin/blob/main/Screenshots/image_3.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa-Admin/blob/main/Screenshots/image_4.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Vintage-Villa-Admin/blob/main/Screenshots/image_5.PNG?raw=true"
     ],
     "videos": [],
-    "techStack": ["React", "Material-UI", "Vite"],
+    "techStack": [
+      "React",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "TypeScript",
+      "MUI",
+      "Vite"
+    ],
     "status": "Completed",
-    "category": "Web Apps"
+    "category": "Web Apps",
+    "features": [
+      "Secure login system",
+      "Booking management module",
+      "Media management system",
+      "Content update capabilities",
+      "Mobile responsive design"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Vintage-Villa-Admin",
+    "preview": "https://admin.vintagevilla.lk/"
   },
   {
     "id": 4,

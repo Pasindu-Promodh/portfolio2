@@ -200,7 +200,7 @@ const ProjectPage = () => {
                     key={index}
                     component={media.endsWith(".mp4") ? "video" : "img"}
                     src={media}
-                    onClick={() => openFullscreen(project.image)}
+                    onClick={() => openFullscreen(mediaList[index])}
                     sx={{
                       width: 100,
                       height: 60,
