@@ -377,5 +377,441 @@
     ],
     "github": "https://github.com/Pasindu-Promodh/US-Debt",
     "preview": "https://pasindu-promodh.github.io/US-Debt/"
+  },
+  {
+    "id": 15,
+    "name": "Tyson Butt",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players tap tyson butt, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Tyson-Butt/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Tyson-Butt/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Tyson-Butt/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Tyson-Butt/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Tyson-Butt",
+    "preview": "https://pasindu-promodh.github.io/Tyson-Butt/"
+  },
+  {
+    "id": 16,
+    "name": "Elon & the DogeCoin",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to collect DOGE coins, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Elon-and-the-DogeCoin/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Elon-and-the-DogeCoin/blob/main/Screenshots/image_1.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Elon-and-the-DogeCoin",
+    "preview": "https://pasindu-promodh.github.io/Elon-and-the-DogeCoin/"
+  },
+  {
+    "id": 17,
+    "name": "D.O.G.E",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to collect DOGE coins, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/D.O.G.E/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/D.O.G.E/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/D.O.G.E/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/D.O.G.E/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/D.O.G.E",
+    "preview": "https://pasindu-promodh.github.io/D.O.G.E/"
+  },
+  {
+    "id": 18,
+    "name": "Whack a Martian",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to whack DOGE, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Whack-a-Martian/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Whack-a-Martian/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Whack-a-Martian/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Whack-a-Martian/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Whack-a-Martian",
+    "preview": "https://pasindu-promodh.github.io/Whack-a-Martian/"
+  },
+  {
+    "id": 19,
+    "name": "Banana",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to shoot banana's to bullseye, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Banana/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Banana/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Banana/blob/main/Screenshots/image_2.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Banana",
+    "preview": "https://pasindu-promodh.github.io/Banana/"
+  },
+  {
+    "id": 20,
+    "name": "Mariah",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players hit Mariah with christmas items, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Mariah/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Mariah/blob/main/Screenshots/image_1.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Banana",
+    "preview": "https://pasindu-promodh.github.io/Banana/"
+  },
+  {
+    "id": 21,
+    "name": "Meme Mash",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Meme-Mash/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Meme-Mash/blob/main/Screenshots/image_1.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Meme-Mash",
+    "preview": "https://pasindu-promodh.github.io/Meme-Mash/"
+  },
+  {
+    "id": 22,
+    "name": "Red Light Green Light",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Red-Light-Green-Light/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Red-Light-Green-Light/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Red-Light-Green-Light/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Red-Light-Green-Light/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Red-Light-Green-Light",
+    "preview": "https://pasindu-promodh.github.io/Red-Light-Green-Light/"
+  },
+  {
+    "id": 23,
+    "name": "Dead Meme's Chest",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Dead-Memes-Chest/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Dead-Memes-Chest/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Dead-Memes-Chest/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Dead-Memes-Chest/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Dead-Memes-Chest",
+    "preview": "https://pasindu-promodh.github.io/Dead-Memes-Chest/"
+  },
+  {
+    "id": 24,
+    "name": "Bang the Peaches",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Bang-the-Peaches/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Bang-the-Peaches/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Bang-the-Peaches/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Bang-the-Peaches/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Bang-the-Peaches",
+    "preview": "https://pasindu-promodh.github.io/Bang-the-Peaches/"
+  },
+  {
+    "id": 25,
+    "name": "Happy People",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Happy-People/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Happy-People/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Happy-People/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Happy-People/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Happy-People",
+    "preview": "https://pasindu-promodh.github.io/Happy-People/"
+  },
+  {
+    "id": 26,
+    "name": "Mars Landing",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Mars-Landing/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Mars-Landing/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Mars-Landing/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Mars-Landing/blob/main/Screenshots/image_3.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Mars-Landing/blob/main/Screenshots/image_4.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Mars-Landing",
+    "preview": "https://pasindu-promodh.github.io/Mars-Landing/"
+  },
+  {
+    "id": 27,
+    "name": "LA Fire",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/LA-Fire/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/LA-Fire/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/LA-Fire/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/LA-Fire/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/LA-Fire",
+    "preview": "https://pasindu-promodh.github.io/LA-Fire/"
+  },
+  {
+    "id": 28,
+    "name": "Shaq 'n' Score",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Shaq-n-Score/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Shaq-n-Score/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Shaq-n-Score/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Shaq-n-Score/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Shaq-n-Score",
+    "preview": "https://pasindu-promodh.github.io/Shaq-n-Score/"
+  },
+  {
+    "id": 29,
+    "name": "Diddy Oil",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Diddy-Oil/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Diddy-Oil/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Diddy-Oil/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Diddy-Oil/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Diddy-Oil",
+    "preview": "https://pasindu-promodh.github.io/Diddy-Oil/"
+  },
+  {
+    "id": 30,
+    "name": "Alien Guy",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Alien-Guy/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Alien-Guy/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Alien-Guy/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Alien-Guy/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Alien-Guy",
+    "preview": "https://pasindu-promodh.github.io/Alien-Guy/"
+  },
+  {
+    "id": 31,
+    "name": "Jedi Training",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "https://pasindu-promodh.github.io/Jedi-Training/thumbnail2.webp",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Jedi-Training/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Jedi-Training/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Jedi-Training/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/Jedi-Training",
+    "preview": "https://pasindu-promodh.github.io/Jedi-Training/"
   }
 ]
