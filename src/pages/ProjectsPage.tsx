@@ -15,18 +15,20 @@ import {
   Home as HomeIcon,
 } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import { Fab, Zoom } from "@mui/material";
 import { GlowButton, AnimatedProjectCard } from "../theme";
 
 //data
 import projects from "../data/projects.json";
 import tags from "../data/categories.json";
 
-
 const ProjectsPage = () => {
   const currentTheme = useTheme();
   const navigate = useNavigate();
   const [filter, setFilter] = useState("All Projects");
   const [loaded, setLoaded] = useState(false);
+  const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
     // setLoaded(false);
@@ -36,6 +38,19 @@ const ProjectsPage = () => {
     setLoaded(true);
   }, [filter]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScroll(window.pageYOffset > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const filteredProjects = projects.filter(
     (p) => filter === "All Projects" || p.category === filter
   );
@@ -44,6 +59,13 @@ const ProjectsPage = () => {
     const url = id ? `${page}/${id}` : page;
     navigate(url, { state: { scrollPos } });
   };
+
+  const tagCounts = tags.reduce((acc, tag) => {
+    acc[tag] = projects.filter(
+      (p) => tag === "All Projects" || p.category === tag
+    ).length;
+    return acc;
+  }, {} as Record<string, number>);
 
   return (
     <Container
@@ -128,7 +150,7 @@ const ProjectsPage = () => {
                     maxWidth: "none",
                   }}
                 >
-                  {tag}
+                  {`${tag} (${tagCounts[tag] ?? 0})`}
                 </GlowButton>
               ))}
             </Box>
@@ -176,8 +198,6 @@ const ProjectsPage = () => {
                           boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
                         }}
                       />
-                      
-                        
 
                       <Typography
                         variant="h6"
@@ -257,6 +277,27 @@ const ProjectsPage = () => {
           </Slide>
         </Box>
       </Fade>
+      <Zoom in={showScroll}>
+        <Box
+          onClick={scrollToTop}
+          role="presentation"
+          sx={{
+            position: "fixed",
+            bottom: { xs: 24, sm: 32 },
+            right: { xs: 24, sm: 32 },
+            zIndex: 1500,
+          }}
+        >
+          <Fab
+            color="primary"
+            size="medium"
+            aria-label="scroll back to top"
+            sx={{ boxShadow: 4 }}
+          >
+            <KeyboardArrowUpIcon />
+          </Fab>
+        </Box>
+      </Zoom>
     </Container>
   );
 };
