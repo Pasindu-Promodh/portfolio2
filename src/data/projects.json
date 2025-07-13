@@ -1517,5 +1517,31 @@
     ],
     "github": "https://github.com/Pasindu-Promodh/BTS-Fandom",
     "preview": "https://pasindu-promodh.github.io/BTS-Fandom/"
+  },
+  {
+    "id": 59,
+    "name": "Megaplay",
+    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
+    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
+    "image": "public/Screenshots/Megaplay/thumbnail.png",
+    "images": [
+      "https://github.com/Pasindu-Promodh/BTS-Fandom/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/BTS-Fandom/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/BTS-Fandom/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": [],
+    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Sound Effects",
+      "Smooth Animations",
+      "Touch and Mouse Input",
+      "Portrait Mode",
+      "WebGL Rendering",
+      "Mobile and Desktop Compatibility"
+    ],
+    "github": "https://github.com/Pasindu-Promodh/BTS-Fandom",
+    "preview": "https://pasindu-promodh.github.io/BTS-Fandom/"
   }
 ]
