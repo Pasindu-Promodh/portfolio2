@@ -20,6 +20,7 @@ import { GlowButton } from "../theme";
 import LightboxMediaViewer from "../components/LightboxMediaViewer";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
+import { PlayArrow as PlayIcon } from "@mui/icons-material";
 
 //data
 import projects from "../data/projects.json";
@@ -102,6 +103,16 @@ const ProjectPage = () => {
     const imageIndex = mediaList.findIndex((media) => media === imageSrc);
     setCurrentImageIndex(imageIndex);
     setFullscreenImage(imageSrc);
+  };
+
+  const isYouTubeLink = (url: string) =>
+    url.includes("youtube.com") || url.includes("youtu.be");
+
+  const getYouTubeId = (url: string) => {
+    const match =
+      url.match(/(?:youtube\.com.*v=|youtu\.be\/)([^&?]+)/) ||
+      url.match(/youtube\.com\/embed\/([^?]+)/);
+    return match ? match[1] : null;
   };
 
   return (
@@ -195,11 +206,42 @@ const ProjectPage = () => {
                   mb: 4,
                 }}
               >
-                {mediaList.map((media, index) => (
+                {/* {mediaList.map((media, index) => (
+                  // <Box
+                  //   key={index}
+                  //   component={media.endsWith(".mp4") ? "video" : "img"}
+                  //   src={media}
+                  //   onClick={() => openFullscreen(mediaList[index])}
+                  //   sx={{
+                  //     width: 100,
+                  //     height: 60,
+                  //     objectFit: "cover",
+                  //     borderRadius: "10px",
+                  //     cursor: "pointer",
+                  //     border: "2px solid rgba(255,255,255,0.2)",
+                  //     transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  //     "&:hover": {
+                  //       transform: "scale(1.1)",
+                  //       boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+                  //     },
+                  //   }}
+                  //   muted
+                  //   autoPlay={false}
+                  // />
+
+
                   <Box
                     key={index}
-                    component={media.endsWith(".mp4") ? "video" : "img"}
-                    src={media}
+                    component="img"
+                    src={
+                      media.endsWith(".mp4")
+                        ? media // fallback
+                        : isYouTubeLink(media)
+                        ? `https://img.youtube.com/vi/${getYouTubeId(
+                            media
+                          )}/hqdefault.jpg`
+                        : media
+                    }
                     onClick={() => openFullscreen(mediaList[index])}
                     sx={{
                       width: 100,
@@ -214,10 +256,87 @@ const ProjectPage = () => {
                         boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
                       },
                     }}
-                    muted
-                    autoPlay={false}
                   />
-                ))}
+                ))} */}
+
+                {mediaList.map((media, index) => {
+                  const isYouTube = isYouTubeLink(media);
+                  const isMP4 = media.endsWith(".mp4");
+                  const thumbnailSrc = isYouTube
+                    ? `https://img.youtube.com/vi/${getYouTubeId(
+                        media
+                      )}/hqdefault.jpg`
+                    : isMP4
+                    ? media // video will show frame as preview
+                    : media;
+
+                  return (
+                    <Box
+                      key={index}
+                      sx={{
+                        position: "relative",
+                        width: 100,
+                        height: 60,
+                        borderRadius: "10px",
+                        overflow: "hidden",
+                        cursor: "pointer",
+                        border: "2px solid rgba(255,255,255,0.2)",
+                        transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                        "&:hover": {
+                          transform: "scale(1.1)",
+                          boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
+                        },
+                      }}
+                      onClick={() => openFullscreen(mediaList[index])}
+                    >
+                      {isMP4 ? (
+                        <Box
+                          component="video"
+                          src={media}
+                          muted
+                          playsInline
+                          preload="metadata"
+                          sx={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                      ) : (
+                        <Box
+                          component="img"
+                          src={thumbnailSrc}
+                          alt={`Thumbnail ${index}`}
+                          sx={{
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                          }}
+                        />
+                      )}
+
+                      {(isYouTube || isMP4) && (
+                        <Box
+                          sx={{
+                            position: "absolute",
+                            top: "50%",
+                            left: "50%",
+                            transform: "translate(-50%, -50%)",
+                            color: "white",
+                            bgcolor: "rgba(0, 0, 0, 0.5)",
+                            borderRadius: "50%",
+                            padding: "4px",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <PlayIcon sx={{ fontSize: 24 }} />
+                        </Box>
+                      )}
+                    </Box>
+                  );
+                })}
               </Box>
             </Box>
           </Slide>
@@ -409,6 +528,33 @@ const ProjectPage = () => {
           )}
 
           {/* Main Image */}
+          {/* {fullscreenImage.endsWith(".mp4") ? (
+            <Box
+              component="video"
+              src={fullscreenImage}
+              controls
+              autoPlay
+              sx={{
+                maxWidth: "90vw",
+                maxHeight: "90vh",
+                backgroundColor: "black",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          ) : (
+            <Box
+              component="img"
+              src={fullscreenImage}
+              alt="Fullscreen view"
+              sx={{
+                maxWidth: "90vw",
+                maxHeight: "90vh",
+                objectFit: "contain",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          )} */}
+
           {fullscreenImage.endsWith(".mp4") ? (
             <Box
               component="video"
@@ -419,6 +565,21 @@ const ProjectPage = () => {
                 maxWidth: "90vw",
                 maxHeight: "90vh",
                 backgroundColor: "black",
+              }}
+              onClick={(e) => e.stopPropagation()}
+            />
+          ) : isYouTubeLink(fullscreenImage) ? (
+            <Box
+              component="iframe"
+              src={`https://www.youtube.com/embed/${getYouTubeId(
+                fullscreenImage
+              )}?autoplay=1`}
+              allow="autoplay; fullscreen"
+              frameBorder="0"
+              sx={{
+                width: "90vw",
+                height: "50vw",
+                maxHeight: "90vh",
               }}
               onClick={(e) => e.stopPropagation()}
             />

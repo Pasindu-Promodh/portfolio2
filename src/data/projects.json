@@ -1521,27 +1521,87 @@
   {
     "id": 59,
     "name": "Megaplay",
-    "description": "A 2D meme game created for memegames.wtf — a web gaming platform developed by the company I currently work for. Built using Construct 2, it delivers fast-paced, humorous gameplay with meme-style visuals.",
-    "longDescription": "2D web game developed for memegames.wtf, a gaming site launched by my current company. Built using Construct 2, the game is optimized for both mobile browsers and desktop environments. Players try to select the correct meme, arcade-style environment, featuring meme graphics, smooth animations, and responsive controls. The game includes sound effects, supports both touch and mouse input, runs in portrait mode, and utilizes WebGL for hardware-accelerated rendering—ensuring a fluid, cross-device experience.",
-    "image": "public/Screenshots/Megaplay/thumbnail.png",
+    "description": "Sri Lanka’s first casual eSports platform for Dialog Axiata, offering a vast collection of daily-playable casual games developed by a diverse gaming community.",
+    "longDescription": "Sri Lanka’s first-ever daily casual eSports platform, launched for Dialog Axiata users. It features the largest collection of casual eSports games, built by an extensive and vibrant community of game developers. The platform enables users to play, compete, and win daily rewards through engaging, quick-play games tailored for mobile accessibility. I played a key role in the full development cycle of the platform, with a strong focus on front-end engineering and seamless mobile app integrations. My responsibilities included crafting responsive UIs, optimizing performance across devices, and integrating real-time features to support dynamic gaming experiences.",
+    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/thumbnail.png?raw=true",
     "images": [
-      "https://github.com/Pasindu-Promodh/BTS-Fandom/blob/main/Screenshots/image_1.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/BTS-Fandom/blob/main/Screenshots/image_2.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/BTS-Fandom/blob/main/Screenshots/image_3.PNG?raw=true"
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_3.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_4.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_5.PNG?raw=true"
     ],
-    "videos": [],
-    "techStack": ["Construct 2", "WebGL", "JavaScript"],
+    "videos": ["https://youtu.be/SYzbzL2wHdg?si=JsLZTfkvb-mxhwmU"],
+    "techStack": ["React Native", "WebGL", "JavaScript", "CSS", "Node.js"],
+    "status": "Completed",
+    "category": "Mobile Apps",
+    "features": [
+      "Large Casual Game Library – Dozens of casual eSports games developed by the community, playable instantly.",
+      "WebGL Game Integration – All games are WebGL-based and loaded via secure web views inside the mobile app.",
+      "Mobile App Support – Fully optimized for Android mobile devices with smooth web-app and native feature integration.",
+      "User Profiles – Personalized user accounts with avatars, progress tracking, and performance stats.",
+      "Daily Leaderboards – Competitive leaderboards reset daily to encourage ongoing engagement and replayability.",
+      "Game Rating System – Users can rate games, providing feedback to developers and shaping future content.",
+      "Daily Challenges & Rewards – Incentivized gameplay through time-limited objectives and in-app prizes.",
+      "Push Notifications – Real-time alerts for new challenges, leaderboard updates, and featured games.",
+      "Community Engagement – Support for user feedback, game suggestions, and interactive ratings.",
+      "Authentication & Session Management – Integrated secure user login and session tracking.",
+      "Analytics Integration – In-game metrics tracking to monitor engagement, play trends, and retention."
+    ],
+    "preview": "https://play.google.com/store/apps/details?id=com.megaplay"
+  },
+  {
+    "id": 60,
+    "name": "Microbivore",
+    "description": "Mobile and PC arcade game developed for Global Game Jam Sri Lanka 2020, themed around fighting the COVID-19 pandemic. Created within 48 hours as part of a national online game dev challenge.",
+    "longDescription": "Created during the Global Game Jam Sri Lanka 2020, an online game development hackathon themed around overcoming the COVID-19 pandemic. The event, which offered a prize pool of LKR 100,000, brought together over 30 teams of developers from across the country. Developed entirely within 48 hours, Microbivore is a fast-paced arcade game where players control a microscopic organism tasked with eliminating viruses in infected environments. The game was built with both mobile and Windows platforms in mind, expanding its accessibility and reach. I handled the complete development process—from concept and design to gameplay programming, visual implementation, and cross-platform builds.",
+    "image": "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/thumbnail.png?raw=true",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": ["https://youtu.be/PkMEVVuuzl8?si=-PoFbxwQerhO9NEf"],
+    "techStack": ["Unity", "C#", "Firebase"],
     "status": "Completed",
     "category": "Games",
     "features": [
-      "Sound Effects",
-      "Smooth Animations",
-      "Touch and Mouse Input",
-      "Portrait Mode",
-      "WebGL Rendering",
-      "Mobile and Desktop Compatibility"
+      "Pandemic-Inspired Gameplay – Eliminate virus clusters in microscopic environments to save host systems.",
+      "Cross-Platform Build – Available on both Android mobile devices and Windows PC.",
+      "End-to-End Development – Full solo development: game design, coding, assets, and publishing.",
+      "Arcade Action – Score-based gameplay loop with quick levels and rising difficulty.",
+      "Custom Visual Style – Themed UI and art assets reflecting biological and microscopic aesthetics.",
+      "SFX and Feedback – Responsive audio-visual feedback for every action and in-game event.",
+      "Built in 48 Hours – Designed and developed under tight game jam constraints.",
+      "Publicly Distributed – Made available post-event for download and player feedback."
     ],
-    "github": "https://github.com/Pasindu-Promodh/BTS-Fandom",
-    "preview": "https://pasindu-promodh.github.io/BTS-Fandom/"
+    "preview": "https://github.com/Pasindu-Promodh/Microbivore-exe"
+  },
+  {
+    "id": 61,
+    "name": "Mindborn Sons",
+    "description": "Mobile and PC arcade game developed for Global Game Jam Sri Lanka 2020, themed around fighting the COVID-19 pandemic. Created within 48 hours as part of a national online game dev challenge.",
+    "longDescription": "Created during the Global Game Jam Sri Lanka 2020, an online game development hackathon themed around overcoming the COVID-19 pandemic. The event, which offered a prize pool of LKR 100,000, brought together over 30 teams of developers from across the country. Developed entirely within 48 hours, Microbivore is a fast-paced arcade game where players control a microscopic organism tasked with eliminating viruses in infected environments. The game was built with both mobile and Windows platforms in mind, expanding its accessibility and reach. I handled the complete development process—from concept and design to gameplay programming, visual implementation, and cross-platform builds.",
+    "image": "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/thumbnail.png?raw=true",
+    "images": [
+      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_1.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_2.PNG?raw=true",
+      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_3.PNG?raw=true"
+    ],
+    "videos": ["https://youtu.be/ERUPjEsRCoc?si=qIJ1V88X7lmOJWOq"],
+    "techStack": ["Unity", "C#", "Photon"],
+    "status": "In Development",
+    "category": "Games",
+    "features": [
+      "Pandemic-Inspired Gameplay – Eliminate virus clusters in microscopic environments to save host systems.",
+      "Cross-Platform Build – Available on both Android mobile devices and Windows PC.",
+      "End-to-End Development – Full solo development: game design, coding, assets, and publishing.",
+      "Arcade Action – Score-based gameplay loop with quick levels and rising difficulty.",
+      "Custom Visual Style – Themed UI and art assets reflecting biological and microscopic aesthetics.",
+      "SFX and Feedback – Responsive audio-visual feedback for every action and in-game event.",
+      "Built in 48 Hours – Designed and developed under tight game jam constraints.",
+      "Publicly Distributed – Made available post-event for download and player feedback."
+    ],
+    "preview": "https://github.com/Pasindu-Promodh/Microbivore-exe"
   }
 ]
