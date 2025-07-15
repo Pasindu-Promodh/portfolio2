@@ -1610,9 +1610,9 @@
   {
     "id": 62,
     "name": "MobiStation",
-    "description": "A branded casual gaming platform for SLT-Mobitel, offering curated WebGL games and mobile-optimized gameplay with daily challenges and leaderboard features.",
-    "longDescription": "Mobistation is a branded mobile casual gaming hub developed for SLT-Mobitel users. Similar in spirit to Megaplay, this platform provides instant access to a growing catalog of WebGL-based casual games, optimized for mobile play. Designed with a seamless and responsive UI, Mobistation enables users to compete in daily challenges, track their performance, and win real rewards. My contributions spanned front-end engineering, mobile web view optimization, and platform integration. I focused heavily on UX refinement, smooth cross-device support, and implementing real-time features such as daily leaderboards and push notifications.",
-    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/thumbnail.png?raw=true",
+    "description": "A branded casual gaming platform for SLT-Mobitel, offering curated games and mobile-optimized gameplay with daily challenges and leaderboard features.",
+    "longDescription": "Mobistation is a branded mobile casual gaming hub developed for SLT-Mobitel users. Similar in spirit to Megaplay, this platform provides instant access to a growing catalog of casual games, optimized for mobile play. Designed with a seamless and responsive UI, Mobistation enables users to compete in daily challenges, track their performance, and win real rewards. My contributions spanned front-end engineering, mobile view optimization, and platform integration. I focused heavily on UX refinement, smooth cross-device support, and implementing real-time features such as daily leaderboards and push notifications.",
+    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/thumbnail.webp?raw=true",
     "images": [
       "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_1.webp?raw=true",
       "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_2.webp?raw=true",
@@ -1622,12 +1622,14 @@
       "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_6.webp?raw=true",
       "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_7.webp?raw=true"
     ],
-    "videos": ["https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/video.mp4"],
-    "techStack": ["Unity", "Node.js","Supabase"],
+    "videos": [
+      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Mobistation/video.mp4"
+    ],
+    "techStack": ["Unity", "Node.js", "Supabase"],
     "status": "Completed",
     "category": "Mobile Apps",
     "features": [
-      "Curated Game Collection – A focused set of high-quality WebGL games tailored for casual users.",
+      "Curated Game Collection – A focused set of high-quality games tailored for casual users.",
       "SLT-Mobitel Branding – Custom branding and theming integrated across the platform.",
       "Daily Leaderboards – Resettable competitive ranking system to keep users returning.",
       "Mobile-Optimized Interface – Designed for Android with fast load times and intuitive navigation.",
