@@ -1578,30 +1578,31 @@
     "preview": "https://github.com/Pasindu-Promodh/Microbivore-exe"
   },
   {
-    "id": 61,
-    "name": "Mindborn Sons",
-    "description": "Mobile and PC arcade game developed for Global Game Jam Sri Lanka 2020, themed around fighting the COVID-19 pandemic. Created within 48 hours as part of a national online game dev challenge.",
-    "longDescription": "Created during the Global Game Jam Sri Lanka 2020, an online game development hackathon themed around overcoming the COVID-19 pandemic. The event, which offered a prize pool of LKR 100,000, brought together over 30 teams of developers from across the country. Developed entirely within 48 hours, Microbivore is a fast-paced arcade game where players control a microscopic organism tasked with eliminating viruses in infected environments. The game was built with both mobile and Windows platforms in mind, expanding its accessibility and reach. I handled the complete development process—from concept and design to gameplay programming, visual implementation, and cross-platform builds.",
-    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/thumbnail.jpg?raw=true",
-    "images": [
-      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_1.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_2.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/Microbivore-exe/blob/main/Screenshots/image_3.PNG?raw=true"
-    ],
-    "videos": ["https://youtu.be/ERUPjEsRCoc?si=qIJ1V88X7lmOJWOq"],
-    "techStack": ["Unity", "C#", "Photon"],
-    "status": "In Development",
-    "category": "Games",
-    "features": [
-      "Pandemic-Inspired Gameplay – Eliminate virus clusters in microscopic environments to save host systems.",
-      "Cross-Platform Build – Available on both Android mobile devices and Windows PC.",
-      "End-to-End Development – Full solo development: game design, coding, assets, and publishing.",
-      "Arcade Action – Score-based gameplay loop with quick levels and rising difficulty.",
-      "Custom Visual Style – Themed UI and art assets reflecting biological and microscopic aesthetics.",
-      "SFX and Feedback – Responsive audio-visual feedback for every action and in-game event.",
-      "Built in 48 Hours – Designed and developed under tight game jam constraints.",
-      "Publicly Distributed – Made available post-event for download and player feedback."
-    ],
-    "preview": "https://github.com/Pasindu-Promodh/Microbivore-exe"
-  }
+  "id": 61,
+  "name": "Mindborn Sons",
+  "description": "A fast-paced 3rd-person team-based battle arena game set in a rich mythological world, featuring tribe-based PVP and PVE gameplay across a lush, puzzle-filled map.",
+  "longDescription": "An innovative third-person team-based battle arena that blends fast-paced action with deep cultural mythology inspired by over 1.5 billion people across Asia. Players choose a tribe, customize their warrior, and enter the jungle of Magharesh to locate and retrieve three mystical 'vitals' back to their Altar—all while fending off rival tribes and racing against the clock. \n\nConquest mode introduces both PVP and PVE elements, environmental puzzles, quests, and exploration. With seasonal content, a Founders Pass, and unique character, weapon, and armor drops, Mindborn Sons is built for competitive gameplay and long-term community engagement. \n\nI contributed to the game's core development with a focus on gameplay systems, multiplayer mechanics, and level interactions, ensuring a responsive, immersive, and scalable experience.",
+  "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/thumbnail.jpg?raw=true",
+  "images": [
+    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_1.jpg?raw=true",
+    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_2.jpg?raw=true",
+    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_3.jpg?raw=true",
+    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_4.jpg?raw=true"
+  ],
+  "videos": ["https://youtu.be/ERUPjEsRCoc?si=qIJ1V88X7lmOJWOq"],
+  "techStack": ["Unity", "C#", "Photon"],
+  "status": "In Development",
+  "category": "Games",
+  "features": [
+    "Team-Based Arena Combat – Tribe-vs-tribe battles in a competitive third-person format.",
+    "PVP & PVE Modes – Engage with both real players and AI enemies in dynamic conquest scenarios.",
+    "Mythology-Driven Setting – Built around Asian mythological influences for deeper narrative resonance.",
+    "Exploration & Puzzles – Navigate the jungle of Magharesh, solve environment-based puzzles, and complete quests.",
+    "Objective-Based Gameplay – Capture and return three vital artifacts to your altar to win.",
+    "Custom Characters – Players can customize tribe, character appearance, weapons, and armor.",
+    "Seasonal Progression – Upcoming Season00 Founders Pass with exclusive rewards.",
+    "Multiplayer-Ready – Built with Photon for seamless online play."
+  ]
+}
+
 ]
