@@ -1578,31 +1578,66 @@
     "preview": "https://github.com/Pasindu-Promodh/Microbivore-exe"
   },
   {
-  "id": 61,
-  "name": "Mindborn Sons",
-  "description": "A fast-paced 3rd-person team-based battle arena game set in a rich mythological world, featuring tribe-based PVP and PVE gameplay across a lush, puzzle-filled map.",
-  "longDescription": "An innovative third-person team-based battle arena that blends fast-paced action with deep cultural mythology inspired by over 1.5 billion people across Asia. Players choose a tribe, customize their warrior, and enter the jungle of Magharesh to locate and retrieve three mystical 'vitals' back to their Altar—all while fending off rival tribes and racing against the clock. \n\nConquest mode introduces both PVP and PVE elements, environmental puzzles, quests, and exploration. With seasonal content, a Founders Pass, and unique character, weapon, and armor drops, Mindborn Sons is built for competitive gameplay and long-term community engagement. \n\nI contributed to the game's core development with a focus on gameplay systems, multiplayer mechanics, and level interactions, ensuring a responsive, immersive, and scalable experience.",
-  "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/thumbnail.jpg?raw=true",
-  "images": [
-    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_1.jpg?raw=true",
-    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_2.jpg?raw=true",
-    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_3.jpg?raw=true",
-    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_4.jpg?raw=true"
-  ],
-  "videos": ["https://youtu.be/ERUPjEsRCoc?si=qIJ1V88X7lmOJWOq"],
-  "techStack": ["Unity", "C#", "Photon"],
-  "status": "In Development",
-  "category": "Games",
-  "features": [
-    "Team-Based Arena Combat – Tribe-vs-tribe battles in a competitive third-person format.",
-    "PVP & PVE Modes – Engage with both real players and AI enemies in dynamic conquest scenarios.",
-    "Mythology-Driven Setting – Built around Asian mythological influences for deeper narrative resonance.",
-    "Exploration & Puzzles – Navigate the jungle of Magharesh, solve environment-based puzzles, and complete quests.",
-    "Objective-Based Gameplay – Capture and return three vital artifacts to your altar to win.",
-    "Custom Characters – Players can customize tribe, character appearance, weapons, and armor.",
-    "Seasonal Progression – Upcoming Season00 Founders Pass with exclusive rewards.",
-    "Multiplayer-Ready – Built with Photon for seamless online play."
-  ]
-}
-
+    "id": 61,
+    "name": "Mindborn Sons",
+    "description": "A fast-paced 3rd-person team-based battle arena game set in a rich mythological world, featuring tribe-based PVP and PVE gameplay across a lush, puzzle-filled map.",
+    "longDescription": "An innovative third-person team-based battle arena that blends fast-paced action with deep cultural mythology inspired by over 1.5 billion people across Asia. Players choose a tribe, customize their warrior, and enter the jungle of Magharesh to locate and retrieve three mystical 'vitals' back to their Altar—all while fending off rival tribes and racing against the clock. \n\nConquest mode introduces both PVP and PVE elements, environmental puzzles, quests, and exploration. With seasonal content, a Founders Pass, and unique character, weapon, and armor drops, Mindborn Sons is built for competitive gameplay and long-term community engagement. \n\nI contributed to the game's core development with a focus on gameplay systems, multiplayer mechanics, and level interactions, ensuring a responsive, immersive, and scalable experience.",
+    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/thumbnail.jpg?raw=true",
+    "images": [
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_1.jpg?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_2.jpg?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_3.jpg?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_4.jpg?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_5.png?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_6.png?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_7.png?raw=true"
+    ],
+    "videos": ["https://youtu.be/ERUPjEsRCoc?si=qIJ1V88X7lmOJWOq"],
+    "techStack": ["Unity", "C#", "Photon"],
+    "status": "In Development",
+    "category": "Games",
+    "features": [
+      "Team-Based Arena Combat – Tribe-vs-tribe battles in a competitive third-person format.",
+      "PVP & PVE Modes – Engage with both real players and AI enemies in dynamic conquest scenarios.",
+      "Mythology-Driven Setting – Built around Asian mythological influences for deeper narrative resonance.",
+      "Exploration & Puzzles – Navigate the jungle of Magharesh, solve environment-based puzzles, and complete quests.",
+      "Objective-Based Gameplay – Capture and return three vital artifacts to your altar to win.",
+      "Custom Characters – Players can customize tribe, character appearance, weapons, and armor.",
+      "Seasonal Progression – Upcoming Season00 Founders Pass with exclusive rewards.",
+      "Multiplayer-Ready – Built with Photon for seamless online play."
+    ]
+  },
+  {
+    "id": 62,
+    "name": "MobiStation",
+    "description": "A branded casual gaming platform for SLT-Mobitel, offering curated WebGL games and mobile-optimized gameplay with daily challenges and leaderboard features.",
+    "longDescription": "Mobistation is a branded mobile casual gaming hub developed for SLT-Mobitel users. Similar in spirit to Megaplay, this platform provides instant access to a growing catalog of WebGL-based casual games, optimized for mobile play. Designed with a seamless and responsive UI, Mobistation enables users to compete in daily challenges, track their performance, and win real rewards. My contributions spanned front-end engineering, mobile web view optimization, and platform integration. I focused heavily on UX refinement, smooth cross-device support, and implementing real-time features such as daily leaderboards and push notifications.",
+    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/thumbnail.png?raw=true",
+    "images": [
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_1.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_2.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_3.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_4.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_5.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_6.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_7.webp?raw=true"
+    ],
+    "videos": ["https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/video.mp4"],
+    "techStack": ["Unity", "Node.js","Supabase"],
+    "status": "Completed",
+    "category": "Mobile Apps",
+    "features": [
+      "Curated Game Collection – A focused set of high-quality WebGL games tailored for casual users.",
+      "SLT-Mobitel Branding – Custom branding and theming integrated across the platform.",
+      "Daily Leaderboards – Resettable competitive ranking system to keep users returning.",
+      "Mobile-Optimized Interface – Designed for Android with fast load times and intuitive navigation.",
+      "User Profiles – Personalized dashboards with avatars, scores, and gameplay history.",
+      "Game Feedback System – Users can rate and comment on games, enhancing community input.",
+      "Push Notifications – Real-time alerts for daily rewards, new games, and leaderboard updates.",
+      "Reward Challenges – Time-based game events tied to in-app and carrier-based incentives.",
+      "Secure Login & Session Tracking – Integrated user authentication with persistent session handling.",
+      "Performance Analytics – In-depth tracking of user engagement and game interaction."
+    ],
+    "preview": "https://play.google.com/store/apps/details?id=com.ninehermits.mobistation"
+  }
 ]
