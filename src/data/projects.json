@@ -1523,13 +1523,13 @@
     "name": "Megaplay",
     "description": "Sri Lanka’s first casual eSports platform for Dialog Axiata, offering a vast collection of daily-playable casual games developed by a diverse gaming community.",
     "longDescription": "Sri Lanka’s first-ever daily casual eSports platform, launched for Dialog Axiata users. It features the largest collection of casual eSports games, built by an extensive and vibrant community of game developers. The platform enables users to play, compete, and win daily rewards through engaging, quick-play games tailored for mobile accessibility. I played a key role in the full development cycle of the platform, with a strong focus on front-end engineering and seamless mobile app integrations. My responsibilities included crafting responsive UIs, optimizing performance across devices, and integrating real-time features to support dynamic gaming experiences.",
-    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/thumbnail.png?raw=true",
+    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/thumbnail.webp?raw=true",
     "images": [
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_1.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_2.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_3.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_4.PNG?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_5.PNG?raw=true"
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_1.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_2.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_3.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_4.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Megaplay/image_5.webp?raw=true"
     ],
     "videos": ["https://youtu.be/SYzbzL2wHdg?si=JsLZTfkvb-mxhwmU"],
     "techStack": ["React Native", "WebGL", "JavaScript", "CSS", "Node.js"],
@@ -1582,15 +1582,15 @@
     "name": "Mindborn Sons",
     "description": "A fast-paced 3rd-person team-based battle arena game set in a rich mythological world, featuring tribe-based PVP and PVE gameplay across a lush, puzzle-filled map.",
     "longDescription": "An innovative third-person team-based battle arena that blends fast-paced action with deep cultural mythology inspired by over 1.5 billion people across Asia. Players choose a tribe, customize their warrior, and enter the jungle of Magharesh to locate and retrieve three mystical 'vitals' back to their Altar—all while fending off rival tribes and racing against the clock. \n\nConquest mode introduces both PVP and PVE elements, environmental puzzles, quests, and exploration. With seasonal content, a Founders Pass, and unique character, weapon, and armor drops, Mindborn Sons is built for competitive gameplay and long-term community engagement. \n\nI contributed to the game's core development with a focus on gameplay systems, multiplayer mechanics, and level interactions, ensuring a responsive, immersive, and scalable experience.",
-    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/thumbnail.jpg?raw=true",
+    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/thumbnail.webp?raw=true",
     "images": [
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_1.jpg?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_2.jpg?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_3.jpg?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_4.jpg?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_5.png?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_6.png?raw=true",
-      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_7.png?raw=true"
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_1.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_2.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_3.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_4.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_5.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_6.webp?raw=true",
+      "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/MBS/image_7.webp?raw=true"
     ],
     "videos": ["https://youtu.be/ERUPjEsRCoc?si=qIJ1V88X7lmOJWOq"],
     "techStack": ["Unity", "C#", "Photon"],
@@ -1623,8 +1623,7 @@
       "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_7.webp?raw=true"
     ],
     "videos": [
-      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Mobistation/video.mp4",
-      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Color_Bounce/Color_Bounce.mp4"
+      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Mobistation/video.mp4"
     ],
     "techStack": ["Unity", "Node.js", "Supabase"],
     "status": "Completed",
@@ -1679,33 +1678,29 @@
     "preview": "https://t.me/PlankPushers_bot/plank_pushers_dev"
   },
   {
-  "id": 64,
-  "name": "Color Bounce",
-  "description": "A vibrant, candy-themed endless tower-hopping game where players rotate color wheels to match bouncing balls mid-flight.",
-  "longDescription": "Color Bounce is a fast-paced, endless arcade game where precision and timing meet colorful strategy. Players control a bouncing ball that drops from tower to tower. Players must tap in time to align the correct color segment before the ball lands. If the color matches, the ball bounces to the next tower—if not, it's game over. With a candy-inspired visual style, upbeat sound effects, and increasingly challenging speeds, the game offers both a casual pick-up-and-play vibe and rewarding skill progression. I handled gameplay programming, visual effects, and touch input optimization for mobile devices.",
-  "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/thumbnail.webp?raw=true",
-  "images": [
-    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/image_1.webp?raw=true",
-    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/image_2.webp?raw=true",
-    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/image_3.webp?raw=true"
-  ],
-  "videos": [
-    "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Color_Bounce/video_1.mp4"
-  ],
-  "techStack": ["Unity", "C#", "Firebase"],
-  "status": "Completed",
-  "category": "Games",
-  "features": [
-    "Endless Gameplay – Progressive challenge with increasing drop speed and shorter tower gaps.",
-    "Color-Matching Mechanic – Tap to rotate the color wheel and match the ball before impact.",
-    "Candy-Themed Visuals – Vibrant and playful design inspired by sugary arcade aesthetics.",
-    "Mobile-First UX – Responsive controls and smooth animations tailored for touch devices.",
-    "Score System – Tracks high scores to encourage replayability and competition.",
-    "Audio Feedback – Satisfying bounce sounds and alerts enhance moment-to-moment gameplay.",
-    "Instant Restart – Minimal downtime for faster retry loops and addictive play sessions.",
-    "Polished VFX – Bounce particles, glow effects, and smooth color transitions."
-  ],
-  "preview": "https://pasindu-promodh.github.io/color-bounce/"
-}
-
+    "id": 64,
+    "name": "Color Bounce",
+    "description": "A vibrant, candy-themed endless tower-hopping game where players rotate color wheels to match bouncing balls mid-flight.",
+    "longDescription": "Color Bounce is a fast-paced, endless arcade game where precision and timing meet colorful strategy. Players control a bouncing ball that drops from tower to tower. Players must tap in time to align the correct color segment before the ball lands. If the color matches, the ball bounces to the next tower—if not, it's game over. With a candy-inspired visual style, upbeat sound effects, and increasingly challenging speeds, the game offers both a casual pick-up-and-play vibe and rewarding skill progression. I handled gameplay programming, visual effects, and touch input optimization for mobile devices.",
+    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/thumbnail.webp?raw=true",
+    "images": [
+    ],
+    "videos": [
+      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Color_Bounce/video_1.mp4"
+    ],
+    "techStack": ["Unity", "C#", "Firebase"],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Endless Gameplay – Progressive challenge with increasing drop speed and shorter tower gaps.",
+      "Color-Matching Mechanic – Tap to rotate the color wheel and match the ball before impact.",
+      "Candy-Themed Visuals – Vibrant and playful design inspired by sugary arcade aesthetics.",
+      "Mobile-First UX – Responsive controls and smooth animations tailored for touch devices.",
+      "Score System – Tracks high scores to encourage replayability and competition.",
+      "Audio Feedback – Satisfying bounce sounds and alerts enhance moment-to-moment gameplay.",
+      "Instant Restart – Minimal downtime for faster retry loops and addictive play sessions.",
+      "Polished VFX – Bounce particles, glow effects, and smooth color transitions."
+    ],
+    "preview": "https://pasindu-promodh.github.io/color-bounce/"
+  }
 ]
