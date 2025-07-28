@@ -283,10 +283,10 @@ const HomePage: React.FC = () => {
                       boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
                       background: `linear-gradient(45deg, ${currentTheme.palette.primary.main}, ${currentTheme.palette.secondary.main})`,
                     }}
-                    src="https://media.licdn.com/dms/image/v2/C5603AQHHgSWg3KJmsg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1590650753720?e=1756944000&v=beta&t=iIrXJ0J-Q557jGtntFqQg9oO0XJJJvqi3hYUwKjVo6o"
+                    src="./profile.jpeg"
                     alt="Profile"
                   >
-                    YN
+                    P
                   </Avatar>
                   <Typography
                     variant="h6"

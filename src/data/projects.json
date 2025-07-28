@@ -1623,7 +1623,8 @@
       "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Mobistation/image_7.webp?raw=true"
     ],
     "videos": [
-      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Mobistation/video.mp4"
+      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Mobistation/video.mp4",
+      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Color_Bounce/Color_Bounce.mp4"
     ],
     "techStack": ["Unity", "Node.js", "Supabase"],
     "status": "Completed",
@@ -1641,5 +1642,70 @@
       "Performance Analytics – In-depth tracking of user engagement and game interaction."
     ],
     "preview": "https://play.google.com/store/apps/details?id=com.ninehermits.mobistation"
-  }
+  },
+  {
+    "id": 63,
+    "name": "Plank Pushers",
+    "description": "A Telegram-first Web3 endless runner game built for the Plank Pushers ecosystem, combining casual gameplay, token collection, and community engagement.",
+    "longDescription": "Plank Pushers is a Telegram-first Web3 gaming experience where players, creators, and fans come together to build and share unique, token-integrated games. As the flagship title, this endless runner blends vibrant visuals, responsive gameplay, and crypto-native mechanics. Players navigate fast-paced cityscapes, dodge obstacles, and collect $PUSH tokens to unlock exclusive items. Built with Unity and WebGL, the game is optimized for seamless Telegram integration and real-time play. I contributed to front-end engineering, mobile responsiveness, and Web3 feature integration, including token collection logic and in-game reward systems.",
+    "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Plank_Pushers/thumbnail.webp?raw=true",
+    "images": [],
+    "videos": [
+      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Plank_Pushers/video_1.mp4",
+      "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Plank_Pushers/video_2.mp4"
+    ],
+    "techStack": [
+      "Unity",
+      "WebGL",
+      "Node.js",
+      "Supabase",
+      "Telegram Web Apps",
+      "Solana"
+    ],
+    "status": "Completed",
+    "category": "Games",
+    "features": [
+      "Telegram-First Integration – Seamlessly embedded within Telegram for instant gameplay access.",
+      "Endless Runner Mechanics – Fast-paced, skill-based gameplay with increasing difficulty.",
+      "Web3 Token Collection – Collect $PUSH tokens during gameplay to unlock cosmetics and upgrades.",
+      "Skill-Based Progression – Reflex-based challenges that reward mastery over time.",
+      "Power-Ups – Enhance gameplay with boosts like speed, magnet, and coin multipliers.",
+      "Simple Controls – Tap-and-play mechanics tailored for mobile-first environments.",
+      "Urban Game World – Skate through vibrant, obstacle-filled cityscapes.",
+      "Real-Time Leaderboards – Compete with friends and global players on Telegram.",
+      "Cross-Device Optimization – Smooth performance across Android, iOS, and desktop Telegram clients.",
+      "Community-Centric Design – Built as part of a broader creator-first Web3 gaming ecosystem."
+    ],
+    "preview": "https://t.me/PlankPushers_bot/plank_pushers_dev"
+  },
+  {
+  "id": 64,
+  "name": "Color Bounce",
+  "description": "A vibrant, candy-themed endless tower-hopping game where players rotate color wheels to match bouncing balls mid-flight.",
+  "longDescription": "Color Bounce is a fast-paced, endless arcade game where precision and timing meet colorful strategy. Players control a bouncing ball that drops from tower to tower. Players must tap in time to align the correct color segment before the ball lands. If the color matches, the ball bounces to the next tower—if not, it's game over. With a candy-inspired visual style, upbeat sound effects, and increasingly challenging speeds, the game offers both a casual pick-up-and-play vibe and rewarding skill progression. I handled gameplay programming, visual effects, and touch input optimization for mobile devices.",
+  "image": "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/thumbnail.webp?raw=true",
+  "images": [
+    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/image_1.webp?raw=true",
+    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/image_2.webp?raw=true",
+    "https://github.com/Pasindu-Promodh/portfolio2/blob/main/public/Screenshots/Color_Bounce/image_3.webp?raw=true"
+  ],
+  "videos": [
+    "https://cdn.jsdelivr.net/gh/Pasindu-Promodh/portfolio2@main/public/Screenshots/Color_Bounce/video_1.mp4"
+  ],
+  "techStack": ["Unity", "C#", "Firebase"],
+  "status": "Completed",
+  "category": "Games",
+  "features": [
+    "Endless Gameplay – Progressive challenge with increasing drop speed and shorter tower gaps.",
+    "Color-Matching Mechanic – Tap to rotate the color wheel and match the ball before impact.",
+    "Candy-Themed Visuals – Vibrant and playful design inspired by sugary arcade aesthetics.",
+    "Mobile-First UX – Responsive controls and smooth animations tailored for touch devices.",
+    "Score System – Tracks high scores to encourage replayability and competition.",
+    "Audio Feedback – Satisfying bounce sounds and alerts enhance moment-to-moment gameplay.",
+    "Instant Restart – Minimal downtime for faster retry loops and addictive play sessions.",
+    "Polished VFX – Bounce particles, glow effects, and smooth color transitions."
+  ],
+  "preview": "https://pasindu-promodh.github.io/color-bounce/"
+}
+
 ]
