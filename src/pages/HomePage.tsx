@@ -37,7 +37,9 @@ const HomePage: React.FC = () => {
   };
 
   const handleResumeClick = () => {
-    console.log("Download resume functionality will be implemented here.");
+    window.open(
+      "https://docs.google.com/document/d/18qbOsxnD67dqUryTHZT6eEeCYXkmpdGmd_dhnUAsxYQ/export?format=pdf"
+    );
   };
 
   return (
@@ -188,9 +190,11 @@ const HomePage: React.FC = () => {
                 >
                   <Email sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }} />
                 </IconButton>
+
+                {/* LinkedIn button moved before GitHub */}
                 <IconButton
-                  aria-label="github"
-                  href="https://github.com/Pasindu-Promodh"
+                  aria-label="linkedin"
+                  href="https://www.linkedin.com/in/pasindu-gunathilaka/"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{
@@ -201,11 +205,14 @@ const HomePage: React.FC = () => {
                     },
                   }}
                 >
-                  <GitHubIcon sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }} />
+                  <LinkedInIcon
+                    sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }}
+                  />
                 </IconButton>
+
                 <IconButton
-                  aria-label="linkedin"
-                  href="https://www.linkedin.com/in/pasindu-gunathilaka/"
+                  aria-label="github"
+                  href="https://github.com/Pasindu-Promodh"
                   target="_blank"
                   rel="noopener noreferrer"
                   sx={{
@@ -216,9 +223,7 @@ const HomePage: React.FC = () => {
                     },
                   }}
                 >
-                  <LinkedInIcon
-                    sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }}
-                  />
+                  <GitHubIcon sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }} />
                 </IconButton>
               </Box>
             </Slide>
