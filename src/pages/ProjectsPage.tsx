@@ -22,6 +22,7 @@ import { GlowButton, AnimatedProjectCard } from "../theme";
 //data
 import projects from "../data/projects.json";
 import tags from "../data/categories.json";
+import { logAction } from "../Analytics/logger";
 
 const ProjectsPage = () => {
   const currentTheme = useTheme();
@@ -39,12 +40,14 @@ const ProjectsPage = () => {
   }, [filter]);
 
   useEffect(() => {
+    logAction("Projects");
     const handleScroll = () => {
       setShowScroll(window.pageYOffset > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+    
   }, []);
 
   const scrollToTop = () => {

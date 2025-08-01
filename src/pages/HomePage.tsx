@@ -18,6 +18,7 @@ import { GlassCard, GlowButton } from "../theme";
 
 //data
 import skills from "../data/skills.json";
+import { logAction } from "../Analytics/logger";
 
 // Main Home component
 const HomePage: React.FC = () => {
@@ -29,6 +30,7 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     setLoaded(true);
+    logAction("Home");
   }, []);
 
   const gotoPage = (page: string, id?: number, scrollPos?: number) => {

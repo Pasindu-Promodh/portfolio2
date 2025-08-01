@@ -4,8 +4,10 @@ import HomePage from "./pages/HomePage";
 import ProjectsPage from "./pages/ProjectsPage";
 import ProjectPage from "./pages/ProjectPage";
 import Layout from "./components/Layout";
+import { useVisitor } from "./Analytics/useVisitor";
 
 function App() {
+  useVisitor();
   return (
     <Router>
       <Routes>
