@@ -17,7 +17,6 @@ import {
   Close,
 } from "@mui/icons-material";
 import { GlowButton } from "../theme";
-import LightboxMediaViewer from "../components/LightboxMediaViewer";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
 import { PlayArrow as PlayIcon } from "@mui/icons-material";
@@ -31,7 +30,6 @@ const ProjectPage = () => {
   const navigate = useNavigate();
   const currentTheme = useTheme();
   const [loaded, setLoaded] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -39,7 +37,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    logAction("project_viewed", {
+    logAction("project", {
       projectId: project?.id,
       projectName: project?.name,
     });
@@ -53,13 +51,17 @@ const ProjectPage = () => {
   };
 
   const handleClick = (action: string) => {
+    logAction(action, {
+      projectId: project?.id,
+      projectName: project?.name,
+    });
     switch (action) {
-      case "github":
-        logAction("GitHub Visited ID: " + project?.id + " - " + project?.name);
+      case "project_github":
+        // logAction("GitHub Visited ID: " + project?.id + " - " + project?.name);
         window.open(project?.github, "_blank");
         break;
-      case "preview":
-        logAction("Preview Visited ID: " + project?.id + " - " + project?.name);
+      case "project_preview":
+        // logAction("Preview Visited ID: " + project?.id + " - " + project?.name);
         window.open(project?.preview, "_blank");
         break;
       default:
@@ -385,7 +387,7 @@ const ProjectPage = () => {
                     glowVariant="primary"
                     startIcon={<GitHubIcon />}
                     sx={{ px: 3 }}
-                    onClick={() => handleClick("github")}
+                    onClick={() => handleClick("project_github")}
                   >
                     GitHub
                   </GlowButton>
@@ -395,7 +397,7 @@ const ProjectPage = () => {
                     glowVariant="secondary"
                     startIcon={<LaunchIcon />}
                     sx={{ px: 3 }}
-                    onClick={() => handleClick("preview")}
+                    onClick={() => handleClick("project_preview")}
                   >
                     Preview
                   </GlowButton>

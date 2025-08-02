@@ -39,25 +39,26 @@ const HomePage: React.FC = () => {
   };
 
   const handleClick = (action: string) => {
+    logAction(action);
     switch (action) {
       case "email":
         navigator.clipboard.writeText("pasindugunathilaka96@gmail.com");
         setCopied(true);
-        logAction("Email Copied");
+        // logAction("Email Copied");
         break;
       case "linkedin":
-        logAction("LinkedIn Visited");
+        // logAction("LinkedIn Visited");
         window.open(
           "https://www.linkedin.com/in/pasindu-gunathilaka/",
           "_blank"
         );
         break;
       case "github":
-        logAction("GitHub Visited");
+        // logAction("GitHub Visited");
         window.open("https://github.com/Pasindu-Promodh", "_blank");
         break;
       case "resume":
-        logAction("Resume Downloaded");
+        // logAction("Resume Downloaded");
         window.open(
           "https://docs.google.com/document/d/18qbOsxnD67dqUryTHZT6eEeCYXkmpdGmd_dhnUAsxYQ/export?format=pdf",
           "_blank"
