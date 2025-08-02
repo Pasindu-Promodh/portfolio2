@@ -40,7 +40,7 @@ const ProjectsPage = () => {
   }, [filter]);
 
   useEffect(() => {
-    logAction("Projects");
+    logAction("projects");
     const handleScroll = () => {
       setShowScroll(window.pageYOffset > 300);
     };

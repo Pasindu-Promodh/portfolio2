@@ -30,7 +30,7 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     setLoaded(true);
-    logAction("Home");
+    logAction("home");
   }, []);
 
   const gotoPage = (page: string, id?: number, scrollPos?: number) => {
