@@ -1,4 +1,3 @@
-// useVisitor.ts
 import { useEffect } from "react";
 import { db } from "./firebase";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
@@ -11,19 +10,29 @@ export function useVisitor() {
     const id = localStorage.getItem(VISITOR_ID_KEY) || uuidv4();
     localStorage.setItem(VISITOR_ID_KEY, id);
 
+    const isLocalhost =
+      location.hostname === "localhost" ||
+      location.hostname === "127.0.0.1" ||
+      location.hostname === "::1";
+
+    if (isLocalhost) {
+      console.log(`Skipping visitor tracking in localhost for ID: ${id}`);
+      return;
+    }
+
+    // Track in Firestore
     const docRef = doc(db, "visitors", id);
     setDoc(docRef, {
       id,
       firstVisit: serverTimestamp(),
     }, { merge: true });
 
-    // You can trigger an email via a cloud function here
+    // Trigger email
     fetch(`https://us-central1-portfolio-3431b.cloudfunctions.net/sendVisitorEmail`, {
       method: "POST",
       body: JSON.stringify({ id }),
     });
 
     console.log(`Visitor initialized with ID: ${id}`);
-
   }, []);
 }
