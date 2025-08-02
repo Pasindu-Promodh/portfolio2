@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { db } from "./firebase";
-import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import { doc, getDoc, setDoc, serverTimestamp } from "firebase/firestore";
 import { v4 as uuidv4 } from "uuid";
 
 const VISITOR_ID_KEY = "visitor_id";
@@ -20,19 +20,26 @@ export function useVisitor() {
       return;
     }
 
-    // Track in Firestore
     const docRef = doc(db, "visitors", id);
-    setDoc(docRef, {
-      id,
-      firstVisit: serverTimestamp(),
-    }, { merge: true });
 
-    // Trigger email
-    fetch(`https://us-central1-portfolio-3431b.cloudfunctions.net/sendVisitorEmail`, {
-      method: "POST",
-      body: JSON.stringify({ id }),
+    getDoc(docRef).then((docSnap) => {
+      if (!docSnap.exists()) {
+        // Only set firstVisit if document is new
+        setDoc(docRef, {
+          id,
+          firstVisit: serverTimestamp(),
+        });
+        console.log(`New visitor tracked: ${id}`);
+      } else {
+        console.log(`Returning visitor: ${id}`);
+      }
+
+      // Always send email
+      fetch(`https://us-central1-portfolio-3431b.cloudfunctions.net/sendVisitorEmail`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
     });
-
-    console.log(`Visitor initialized with ID: ${id}`);
   }, []);
 }
