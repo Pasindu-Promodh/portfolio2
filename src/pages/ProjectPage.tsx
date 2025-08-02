@@ -24,6 +24,7 @@ import { PlayArrow as PlayIcon } from "@mui/icons-material";
 
 //data
 import projects from "../data/projects.json";
+import { logAction } from "../Analytics/logger";
 
 const ProjectPage = () => {
   const { id } = useParams();
@@ -38,6 +39,7 @@ const ProjectPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    logAction("Project Viewed ID: " + id + " - " + project?.name);
     setLoaded(true);
   }, []);
 
@@ -45,6 +47,21 @@ const ProjectPage = () => {
     const url = id ? `${page}/${id}` : page;
     navigate(url, { state: { scrollPos } });
   };
+
+  const handleClick = (action: string) => {
+      switch (action) {
+        case "github":
+          logAction("GitHub Visited ID: " + project?.id + " - " + project?.name);
+          window.open(project?.github, "_blank")
+          break;
+        case "preview":
+          logAction("Preview Visited ID: " + project?.id + " - " + project?.name);
+          window.open(project?.preview, "_blank")
+          break;
+        default:
+          console.warn("Unknown action:", action);
+      }
+    };
 
   if (!project) {
     return (
@@ -206,58 +223,6 @@ const ProjectPage = () => {
                   mb: 4,
                 }}
               >
-                {/* {mediaList.map((media, index) => (
-                  // <Box
-                  //   key={index}
-                  //   component={media.endsWith(".mp4") ? "video" : "img"}
-                  //   src={media}
-                  //   onClick={() => openFullscreen(mediaList[index])}
-                  //   sx={{
-                  //     width: 100,
-                  //     height: 60,
-                  //     objectFit: "cover",
-                  //     borderRadius: "10px",
-                  //     cursor: "pointer",
-                  //     border: "2px solid rgba(255,255,255,0.2)",
-                  //     transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  //     "&:hover": {
-                  //       transform: "scale(1.1)",
-                  //       boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
-                  //     },
-                  //   }}
-                  //   muted
-                  //   autoPlay={false}
-                  // />
-
-
-                  <Box
-                    key={index}
-                    component="img"
-                    src={
-                      media.endsWith(".mp4")
-                        ? media // fallback
-                        : isYouTubeLink(media)
-                        ? `https://img.youtube.com/vi/${getYouTubeId(
-                            media
-                          )}/hqdefault.jpg`
-                        : media
-                    }
-                    onClick={() => openFullscreen(mediaList[index])}
-                    sx={{
-                      width: 100,
-                      height: 60,
-                      objectFit: "cover",
-                      borderRadius: "10px",
-                      cursor: "pointer",
-                      border: "2px solid rgba(255,255,255,0.2)",
-                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                      "&:hover": {
-                        transform: "scale(1.1)",
-                        boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
-                      },
-                    }}
-                  />
-                ))} */}
 
                 {mediaList.map((media, index) => {
                   const isYouTube = isYouTubeLink(media);
@@ -417,7 +382,7 @@ const ProjectPage = () => {
                     glowVariant="primary"
                     startIcon={<GitHubIcon />}
                     sx={{ px: 3 }}
-                    onClick={() => window.open(project.github, "_blank")}
+                    onClick={() => handleClick("github")}
                   >
                     GitHub
                   </GlowButton>
@@ -427,7 +392,7 @@ const ProjectPage = () => {
                     glowVariant="secondary"
                     startIcon={<LaunchIcon />}
                     sx={{ px: 3 }}
-                    onClick={() => window.open(project.preview, "_blank")}
+                    onClick={() => handleClick("preview")}
                   >
                     Preview
                   </GlowButton>
@@ -528,32 +493,6 @@ const ProjectPage = () => {
           )}
 
           {/* Main Image */}
-          {/* {fullscreenImage.endsWith(".mp4") ? (
-            <Box
-              component="video"
-              src={fullscreenImage}
-              controls
-              autoPlay
-              sx={{
-                maxWidth: "90vw",
-                maxHeight: "90vh",
-                backgroundColor: "black",
-              }}
-              onClick={(e) => e.stopPropagation()}
-            />
-          ) : (
-            <Box
-              component="img"
-              src={fullscreenImage}
-              alt="Fullscreen view"
-              sx={{
-                maxWidth: "90vw",
-                maxHeight: "90vh",
-                objectFit: "contain",
-              }}
-              onClick={(e) => e.stopPropagation()}
-            />
-          )} */}
 
           {fullscreenImage.endsWith(".mp4") ? (
             <Box

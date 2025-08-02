@@ -38,7 +38,38 @@ const HomePage: React.FC = () => {
     navigate(url, { state: { scrollPos } });
   };
 
+  const handleClick = (action: string) => {
+    switch (action) {
+      case "email":
+        navigator.clipboard.writeText("pasindugunathilaka96@gmail.com");
+        setCopied(true);
+        logAction("Email Copied");
+        break;
+      case "linkedin":
+        logAction("LinkedIn Visited");
+        window.open(
+          "https://www.linkedin.com/in/pasindu-gunathilaka/",
+          "_blank"
+        );
+        break;
+      case "github":
+        logAction("GitHub Visited");
+        window.open("https://github.com/Pasindu-Promodh", "_blank");
+        break;
+      case "resume":
+        logAction("Resume Downloaded");
+        window.open(
+          "https://docs.google.com/document/d/18qbOsxnD67dqUryTHZT6eEeCYXkmpdGmd_dhnUAsxYQ/export?format=pdf",
+          "_blank"
+        );
+        break;
+      default:
+        console.warn("Unknown action:", action);
+    }
+  };
+
   const handleResumeClick = () => {
+    logAction("Resume Downloaded");
     window.open(
       "https://docs.google.com/document/d/18qbOsxnD67dqUryTHZT6eEeCYXkmpdGmd_dhnUAsxYQ/export?format=pdf"
     );
@@ -176,12 +207,7 @@ const HomePage: React.FC = () => {
               >
                 <IconButton
                   aria-label="email"
-                  onClick={() => {
-                    navigator.clipboard.writeText(
-                      "pasindugunathilaka96@gmail.com"
-                    );
-                    setCopied(true);
-                  }}
+                  onClick={() => handleClick("email")}
                   sx={{
                     color: "rgba(255, 255, 255, 0.7)",
                     "&:hover": {
@@ -193,12 +219,9 @@ const HomePage: React.FC = () => {
                   <Email sx={{ fontSize: { xs: "2rem", md: "2.5rem" } }} />
                 </IconButton>
 
-                {/* LinkedIn button moved before GitHub */}
                 <IconButton
                   aria-label="linkedin"
-                  href="https://www.linkedin.com/in/pasindu-gunathilaka/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => handleClick("linkedin")}
                   sx={{
                     color: "rgba(255, 255, 255, 0.7)",
                     "&:hover": {
@@ -214,9 +237,7 @@ const HomePage: React.FC = () => {
 
                 <IconButton
                   aria-label="github"
-                  href="https://github.com/Pasindu-Promodh"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  onClick={() => handleClick("github")}
                   sx={{
                     color: "rgba(255, 255, 255, 0.7)",
                     "&:hover": {
@@ -245,10 +266,11 @@ const HomePage: React.FC = () => {
                 <GlowButton
                   glowVariant="primary"
                   startIcon={<Download />}
-                  onClick={handleResumeClick}
+                  onClick={() => handleClick("resume")}
                 >
                   Download Resume
                 </GlowButton>
+
                 <GlowButton
                   glowVariant="secondary"
                   startIcon={<Code />}

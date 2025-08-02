@@ -10,13 +10,6 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
-  // apiKey: "AIzaSyCrE7dagCcQD77lopPMogtyFgGPexQl4_8",
-  // authDomain: "portfolio-3431b.firebaseapp.com",
-  // projectId: "portfolio-3431b",
-  // storageBucket: "portfolio-3431b.firebasestorage.app",
-  // messagingSenderId: "1030481561592",
-  // appId: "1:1030481561592:web:d3b83347e89110c55f380d",
-  // measurementId: "G-QF1L8QFVR2"
 };
 
 // Initialize Firebase
