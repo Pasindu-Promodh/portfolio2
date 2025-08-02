@@ -39,7 +39,11 @@ const ProjectPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    logAction("Project Viewed ID: " + id + " - " + project?.name);
+    logAction("project_viewed", {
+      projectId: project?.id,
+      projectName: project?.name,
+    });
+
     setLoaded(true);
   }, []);
 
@@ -49,19 +53,19 @@ const ProjectPage = () => {
   };
 
   const handleClick = (action: string) => {
-      switch (action) {
-        case "github":
-          logAction("GitHub Visited ID: " + project?.id + " - " + project?.name);
-          window.open(project?.github, "_blank")
-          break;
-        case "preview":
-          logAction("Preview Visited ID: " + project?.id + " - " + project?.name);
-          window.open(project?.preview, "_blank")
-          break;
-        default:
-          console.warn("Unknown action:", action);
-      }
-    };
+    switch (action) {
+      case "github":
+        logAction("GitHub Visited ID: " + project?.id + " - " + project?.name);
+        window.open(project?.github, "_blank");
+        break;
+      case "preview":
+        logAction("Preview Visited ID: " + project?.id + " - " + project?.name);
+        window.open(project?.preview, "_blank");
+        break;
+      default:
+        console.warn("Unknown action:", action);
+    }
+  };
 
   if (!project) {
     return (
@@ -223,7 +227,6 @@ const ProjectPage = () => {
                   mb: 4,
                 }}
               >
-
                 {mediaList.map((media, index) => {
                   const isYouTube = isYouTubeLink(media);
                   const isMP4 = media.endsWith(".mp4");

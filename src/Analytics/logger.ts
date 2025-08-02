@@ -2,10 +2,12 @@
 import { db } from "./firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
-export async function logAction(action: string) {
+export async function logAction(
+  action: string,
+  metadata?: Record<string, any>
+) {
   const id = localStorage.getItem("visitor_id");
 
-  // Skip logging if on localhost
   if (
     location.hostname === "localhost" ||
     location.hostname === "127.0.0.1" ||
@@ -15,12 +17,15 @@ export async function logAction(action: string) {
     return;
   }
 
-  console.log(`Logging action for visitor ${id}: ${action}`);
-  
   if (!id) return;
 
-  await addDoc(collection(db, "visitors", id, "logs"), {
+  const logEntry = {
     action,
     timestamp: serverTimestamp(),
-  });
+    ...(metadata || {}),
+  };
+
+  console.log(`Logging action for visitor ${id}:`, logEntry);
+
+  await addDoc(collection(db, "visitors", id, "logs"), logEntry);
 }

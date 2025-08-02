@@ -68,13 +68,6 @@ const HomePage: React.FC = () => {
     }
   };
 
-  const handleResumeClick = () => {
-    logAction("Resume Downloaded");
-    window.open(
-      "https://docs.google.com/document/d/18qbOsxnD67dqUryTHZT6eEeCYXkmpdGmd_dhnUAsxYQ/export?format=pdf"
-    );
-  };
-
   return (
     <Container
       maxWidth="lg"
