@@ -49,7 +49,7 @@ const HomePage: React.FC = () => {
       case "linkedin":
         // logAction("LinkedIn Visited");
         window.open(
-          "https://www.linkedin.com/in/pasindu-gunathilaka/",
+          "https://www.linkedin.com/in/pasindu-promod/",
           "_blank"
         );
         break;
