@@ -38,7 +38,7 @@ export const sendVisitorEmail = functions.https.onRequest((req, res) => {
         from: gmailEmail,
         to: gmailEmail,
         subject: "📬 New Portfolio Visitor",
-        text: `A new visitor with ID: ${id} just landed on your portfolio.`,
+        text: `A new visitor with ID: ${id} just landed on your portfolio.\n\nhttps://pasindu-promodh.github.io/portfolio-dashboard/`,
       };
 
       await transporter.sendMail(mailOptions);
