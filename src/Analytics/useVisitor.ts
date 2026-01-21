@@ -35,7 +35,7 @@ export function useVisitor() {
       }
 
       // Always send email
-      fetch(`https://us-central1-portfolio-3431b.cloudfunctions.net/sendVisitorEmail`, {
+      fetch(`https://asia-south1-portfolio-3431b.cloudfunctions.net/sendVisitorEmail`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),
