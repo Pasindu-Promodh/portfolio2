@@ -25,7 +25,7 @@ export async function logAction(
     ...(metadata || {}),
   };
 
-  console.log(`Logging action for visitor ${id}:`, logEntry);
+  // console.log(`Logging action for visitor ${id}:`, logEntry);
 
   await addDoc(collection(db, "visitors", id, "logs"), logEntry);
 }

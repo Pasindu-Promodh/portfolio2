@@ -116,7 +116,7 @@ export const sendVisitorEmail = onRequest(
           from: gmailEmail,
           to: gmailEmail,
           subject: "📬 New Portfolio Visitor",
-          text: `A new visitor landed on your portfolio.\n\nVisitor ID: ${id}\n\nDashboard:\nhttps://pasindu-promodh.github.io/portfolio-dashboard/`,
+          text: `A new visitor landed on your portfolio.\n\nVisitor ID: ${id}\n\nDashboard:https://pasindu-promodh.github.io/portfolio-dashboard/`,
         });
 
         res.status(200).send("Email sent successfully");

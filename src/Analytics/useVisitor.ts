@@ -29,9 +29,9 @@ export function useVisitor() {
           id,
           firstVisit: serverTimestamp(),
         });
-        console.log(`New visitor tracked: ${id}`);
+        // console.log(`New visitor tracked: ${id}`);
       } else {
-        console.log(`Returning visitor: ${id}`);
+        // console.log(`Returning visitor: ${id}`);
       }
 
       // Always send email
