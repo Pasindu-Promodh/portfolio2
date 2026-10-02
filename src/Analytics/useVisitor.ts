@@ -24,7 +24,8 @@ export function useVisitor() {
 
     getDoc(docRef).then((docSnap) => {
       if (!docSnap.exists()) {
-        // Only set firstVisit if document is new
+        // Only set firstVisit if document is new.
+        // Creating the doc triggers the onNewVisitor email function.
         setDoc(docRef, {
           id,
           firstVisit: serverTimestamp(),
@@ -33,13 +34,6 @@ export function useVisitor() {
       } else {
         // console.log(`Returning visitor: ${id}`);
       }
-
-      // Always send email
-      fetch(`https://asia-south1-portfolio-3431b.cloudfunctions.net/sendVisitorEmail`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id }),
-      });
     });
   }, []);
 }

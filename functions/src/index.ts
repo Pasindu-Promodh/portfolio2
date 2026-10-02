@@ -52,10 +52,9 @@
 
 
 
-import { onRequest } from "firebase-functions/v2/https";
+import { onDocumentCreated } from "firebase-functions/v2/firestore";
 import { defineSecret } from "firebase-functions/params";
 import nodemailer from "nodemailer";
-import cors from "cors";
 
 /**
  * Secrets (set via Firebase CLI)
@@ -66,64 +65,41 @@ const GMAIL_EMAIL = defineSecret("GMAIL_EMAIL");
 const GMAIL_PASSWORD = defineSecret("GMAIL_PASSWORD");
 
 /**
- * HTTPS Function
+ * Firestore trigger: emails only when a new visitor doc is created.
+ * Not publicly callable, so it can't be spammed like an HTTPS endpoint.
  */
-export const sendVisitorEmail = onRequest(
+export const onNewVisitor = onDocumentCreated(
   {
-    region: "asia-south1", // closer to Sri Lanka, lower latency
+    document: "visitors/{id}",
+    region: "us-central1", // must match Firestore location (nam5)
     secrets: [GMAIL_EMAIL, GMAIL_PASSWORD],
+    maxInstances: 1,
   },
-  (req, res) => {
-    const corsHandler = cors({ origin: true });
+  async (event) => {
+    const id = event.params.id;
+    const gmailEmail = GMAIL_EMAIL.value();
 
-    corsHandler(req, res, async () => {
-      // Method guard
-      if (req.method !== "POST") {
-        res.status(405).send("Only POST requests allowed");
-        return;
-      }
-
-      // Read secrets at runtime
-      const gmailEmail = GMAIL_EMAIL.value();
-      const gmailPass = GMAIL_PASSWORD.value();
-
-      if (!gmailEmail || !gmailPass) {
-        res.status(500).send("Email secrets not configured");
-        return;
-      }
-
-      // Create transporter INSIDE handler (safe for cold starts)
-      const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-          user: gmailEmail,
-          pass: gmailPass,
-        },
-      });
-
-      try {
-        const body =
-          typeof req.body === "string" ? JSON.parse(req.body) : req.body;
-
-        const { id } = body ?? {};
-
-        if (!id || typeof id !== "string") {
-          res.status(400).send("Missing or invalid 'id'");
-          return;
-        }
-
-        await transporter.sendMail({
-          from: gmailEmail,
-          to: gmailEmail,
-          subject: "📬 New Portfolio Visitor",
-          text: `A new visitor landed on your portfolio.\n\nVisitor ID: ${id}\n\nDashboard:https://pasindu-promodh.github.io/portfolio-dashboard/`,
-        });
-
-        res.status(200).send("Email sent successfully");
-      } catch (err) {
-        console.error("Send mail error:", err);
-        res.status(500).send("Failed to send email");
-      }
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: gmailEmail,
+        pass: GMAIL_PASSWORD.value(),
+      },
     });
+
+    try {
+      await transporter.sendMail({
+        from: gmailEmail,
+        to: gmailEmail,
+        subject: "📬 New Portfolio Visitor",
+        text: `A new visitor landed on your portfolio.
+
+Visitor ID: ${id}
+
+Dashboard:https://pasindu-promodh.github.io/portfolio-dashboard/`,
+      });
+    } catch (err) {
+      console.error("Send mail error:", err);
+    }
   }
 );
