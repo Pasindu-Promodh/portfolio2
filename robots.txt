@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pasindu-promodh.github.io/portfolio2/sitemap.xml
