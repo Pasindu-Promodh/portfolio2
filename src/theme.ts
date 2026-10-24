@@ -35,14 +35,16 @@ export const theme = createTheme({
   },
 });
 
+const reducedMotion = "@media (prefers-reduced-motion: reduce)";
+
 // Animations
-export const gradientShift = keyframes`
+const gradientShift = keyframes`
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 `;
 
-export const floatAnimation = keyframes`
+const floatAnimation = keyframes`
   0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
   50% { transform: translateY(-20px) rotate(180deg); opacity: 0.4; }
 `;
@@ -62,38 +64,30 @@ export const AnimatedBackground = styled(Box)(({ theme }) => ({
   backgroundSize: "400% 400%",
   animation: `${gradientShift} 15s ease infinite`,
   zIndex: -2,
+  [reducedMotion]: { animation: "none" },
 }));
 
+
 // Floating particles component
-// export const FloatingElement = styled(Box)(
-//   ({ delay = 0 }: { delay?: number }) => ({
-//     position: "absolute",
-//     width: "4px",
-//     height: "4px",
-//     backgroundColor: "rgba(255, 255, 255, 0.15)",
-//     borderRadius: "50%",
-//     animation: `${floatAnimation} ${
-//       3 + Math.random() * 4
-//     }s ease-in-out infinite`,
-//     animationDelay: `${delay}s`,
-//   })
-// );
+interface FloatingElementProps {
+  delay?: number;
+  duration?: number;
+  size?: number;
+}
 
-export const FloatingElement = styled(Box)(
-  ({ delay = 0 }: { delay?: number }) => {
-    const size = 4 + Math.random() * 5; // Between 3px and 8px
-    return {
-      position: "absolute",
-      width: `${size}px`,
-      height: `${size}px`,
-      backgroundColor: "rgba(255, 255, 255, 0.15)",
-      borderRadius: "50%",
-      animation: `${floatAnimation} ${3 + Math.random() * 4}s ease-in-out infinite`,
-      animationDelay: `${delay}s`,
-    };
-  }
-);
-
+export const FloatingElement = styled(Box, {
+  shouldForwardProp: (prop) =>
+    !["delay", "duration", "size"].includes(prop as string),
+})<FloatingElementProps>(({ delay = 0, duration = 5, size = 6 }) => ({
+  position: "absolute",
+  width: `${size}px`,
+  height: `${size}px`,
+  backgroundColor: "rgba(255, 255, 255, 0.15)",
+  borderRadius: "50%",
+  animation: `${floatAnimation} ${duration}s ease-in-out infinite`,
+  animationDelay: `${delay}s`,
+  [reducedMotion]: { animation: "none" },
+}));
 
 interface GlowButtonProps {
   glowVariant?: "primary" | "secondary";
@@ -149,7 +143,7 @@ export const GlassCard = styled(Box)(({ theme }) => ({
   boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
   width: "100%",
   maxWidth: 400,
-  mx: "auto",
+  marginInline: "auto",
 }));
 
 export const ProjectCard = styled(Box)(({ theme }) => ({
@@ -195,7 +189,7 @@ export const ProjectCard = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const cardAppear = keyframes`
+const cardAppear = keyframes`
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
 `;
@@ -204,10 +198,11 @@ interface AnimatedProjectCardProps {
   delay?: number;
 }
 
-export const AnimatedProjectCard = styled(
-  ProjectCard
-)<AnimatedProjectCardProps>(({ delay = 0 }) => ({
+export const AnimatedProjectCard = styled(ProjectCard, {
+  shouldForwardProp: (prop) => prop !== "delay",
+})<AnimatedProjectCardProps>(({ delay = 0 }) => ({
   animation: `${cardAppear} 0.5s ease forwards`,
   animationDelay: `${delay}s`,
   opacity: 0,
+  [reducedMotion]: { animation: "none", opacity: 1 },
 }));

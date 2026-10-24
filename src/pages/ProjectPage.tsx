@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useParams, useNavigate, useLocation, useHref } from "react-router-dom";
 import {
   Box,
+  ButtonBase,
   Typography,
   Chip,
   Container,
@@ -9,6 +10,7 @@ import {
   Fade,
   useTheme,
   IconButton,
+  Modal,
 } from "@mui/material";
 import {
   ArrowBack,
@@ -20,123 +22,88 @@ import { GlowButton } from "../theme";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LaunchIcon from "@mui/icons-material/Launch";
 import { PlayArrow as PlayIcon } from "@mui/icons-material";
+import NotFoundPage from "./NotFoundPage";
 
 //data
-import projects from "../data/projects.json";
+import { projects, mediaUrl, type Project } from "../data/projects";
 import { logAction } from "../Analytics/logger";
+
+const externalLink = { target: "_blank", rel: "noopener noreferrer" } as const;
+
+const isYouTubeLink = (url: string) =>
+  url.includes("youtube.com") || url.includes("youtu.be");
+
+const isVideoFile = (url: string) => url.endsWith(".mp4");
+
+const getYouTubeId = (url: string) => {
+  const match =
+    url.match(/(?:youtube\.com.*v=|youtu\.be\/)([^&?]+)/) ||
+    url.match(/youtube\.com\/embed\/([^?]+)/);
+  return match ? match[1] : null;
+};
+
+const overlayButtonSx = {
+  position: "absolute",
+  color: "white",
+  bgcolor: "rgba(0, 0, 0, 0.5)",
+  "&:hover": { bgcolor: "rgba(0, 0, 0, 0.7)" },
+  zIndex: 1,
+} as const;
 
 const ProjectPage = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
-  const currentTheme = useTheme();
-  const [loaded, setLoaded] = useState(false);
-  const [fullscreenImage, setFullscreenImage] = useState<string | null>(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
   const project = projects.find((p) => p.id.toString() === id);
 
+  if (!project) return <NotFoundPage message="Project not found" />;
+
+  // Keyed so all state and the view log reset when switching projects.
+  return <ProjectDetails key={project.id} project={project} />;
+};
+
+const ProjectDetails = ({ project }: { project: Project }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const projectsHref = useHref("/projects");
+  const currentTheme = useTheme();
+  const [loaded, setLoaded] = useState(false);
+  const [viewerIndex, setViewerIndex] = useState<number | null>(null);
+
+  const mediaList = useMemo(
+    () => [project.image, ...(project.images || []), ...(project.videos || [])],
+    [project]
+  );
+
   useEffect(() => {
-    window.scrollTo(0, 0);
     logAction("project", {
-      projectId: project?.id,
-      projectName: project?.name,
+      projectId: project.id,
+      projectName: project.name,
     });
-
     setLoaded(true);
-  }, []);
+  }, [project]);
 
-  const gotoPage = (page: string, id?: number, scrollPos?: number) => {
-    const url = id ? `${page}/${id}` : page;
-    navigate(url, { state: { scrollPos } });
-  };
-
-  const handleClick = (action: string) => {
-    logAction(action, {
-      projectId: project?.id,
-      projectName: project?.name,
-    });
-    switch (action) {
-      case "project_github":
-        // logAction("GitHub Visited ID: " + project?.id + " - " + project?.name);
-        window.open(project?.github, "_blank");
-        break;
-      case "project_preview":
-        // logAction("Preview Visited ID: " + project?.id + " - " + project?.name);
-        window.open(project?.preview, "_blank");
-        break;
-      default:
-        console.warn("Unknown action:", action);
+  // Coming from the list: go back in history so filter and scroll are restored.
+  const handleBack = (event: React.MouseEvent) => {
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey)
+      return;
+    event.preventDefault();
+    if ((location.state as { fromList?: boolean } | null)?.fromList) {
+      navigate(-1);
+    } else {
+      navigate("/projects");
     }
   };
 
-  if (!project) {
-    return (
-      <Container sx={{ pt: 10 }}>
-        <Typography variant="h4" color="error">
-          Project not found
-        </Typography>
-        <GlowButton onClick={() => navigate("/")}>Back to Home</GlowButton>
-      </Container>
+  const step = (delta: number) =>
+    setViewerIndex((i) =>
+      i === null ? i : (i + delta + mediaList.length) % mediaList.length
     );
-  }
 
-  const mediaList = [
-    project.image,
-    ...(project.images || []),
-    ...(project.videos || []),
-  ];
-
-  // Handle escape key to close fullscreen and arrow keys for navigation
-  useEffect(() => {
-    const handleKeydown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        closeFullscreen();
-      } else if (event.key === "ArrowLeft") {
-        goToPrevImage();
-      } else if (event.key === "ArrowRight") {
-        goToNextImage();
-      }
-    };
-
-    if (fullscreenImage) {
-      document.addEventListener("keydown", handleKeydown);
-      return () => document.removeEventListener("keydown", handleKeydown);
-    }
-  }, [fullscreenImage, currentImageIndex, mediaList]);
-
-  const closeFullscreen = () => {
-    setFullscreenImage(null);
+  const handleViewerKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "ArrowLeft") step(-1);
+    else if (event.key === "ArrowRight") step(1);
   };
 
-  const goToPrevImage = () => {
-    const prevIndex =
-      currentImageIndex === 0 ? mediaList.length - 1 : currentImageIndex - 1;
-    setCurrentImageIndex(prevIndex);
-    setFullscreenImage(mediaList[prevIndex]);
-  };
-
-  const goToNextImage = () => {
-    const nextIndex =
-      currentImageIndex === mediaList.length - 1 ? 0 : currentImageIndex + 1;
-    setCurrentImageIndex(nextIndex);
-    setFullscreenImage(mediaList[nextIndex]);
-  };
-
-  const openFullscreen = (imageSrc: string) => {
-    const imageIndex = mediaList.findIndex((media) => media === imageSrc);
-    setCurrentImageIndex(imageIndex);
-    setFullscreenImage(imageSrc);
-  };
-
-  const isYouTubeLink = (url: string) =>
-    url.includes("youtube.com") || url.includes("youtu.be");
-
-  const getYouTubeId = (url: string) => {
-    const match =
-      url.match(/(?:youtube\.com.*v=|youtu\.be\/)([^&?]+)/) ||
-      url.match(/youtube\.com\/embed\/([^?]+)/);
-    return match ? match[1] : null;
-  };
+  const viewerMedia = viewerIndex === null ? null : mediaList[viewerIndex];
 
   return (
     <Container
@@ -150,6 +117,7 @@ const ProjectPage = () => {
         pb: { xs: 8, sm: 8 },
       }}
     >
+      <title>{`${project.name} | Pasindu Promod`}</title>
       <Fade in={loaded} timeout={1000}>
         <Box>
           <Slide direction="down" in={loaded} timeout={600}>
@@ -163,7 +131,8 @@ const ProjectPage = () => {
               <GlowButton
                 glowVariant="secondary"
                 startIcon={<ArrowBack />}
-                onClick={() => gotoPage("/projects")}
+                href={projectsHref}
+                onClick={handleBack}
                 sx={{
                   px: 3,
                 }}
@@ -176,6 +145,7 @@ const ProjectPage = () => {
           <Slide in={loaded} direction="left" timeout={700}>
             <Typography
               variant="h3"
+              component="h1"
               sx={{
                 fontWeight: 700,
                 mb: 3,
@@ -193,19 +163,21 @@ const ProjectPage = () => {
 
           <Slide in={loaded} direction="right" timeout={900}>
             <Box>
-              <Box
+              <ButtonBase
+                aria-label={`View ${project.name} images fullscreen`}
+                onClick={() => setViewerIndex(0)}
                 sx={{
+                  display: "block",
+                  width: "100%",
                   overflow: "hidden",
                   borderRadius: "20px",
                   boxShadow: "0 8px 30px rgba(0,0,0,0.4)",
                   mb: 4,
-                  cursor: "pointer",
                 }}
-                onClick={() => openFullscreen(project.image)}
               >
                 <Box
                   component="img"
-                  src={project.image}
+                  src={mediaUrl(project.image)}
                   alt={project.name}
                   sx={{
                     display: "block",
@@ -218,7 +190,7 @@ const ProjectPage = () => {
                     },
                   }}
                 />
-              </Box>
+              </ButtonBase>
 
               <Box
                 sx={{
@@ -231,38 +203,36 @@ const ProjectPage = () => {
               >
                 {mediaList.map((media, index) => {
                   const isYouTube = isYouTubeLink(media);
-                  const isMP4 = media.endsWith(".mp4");
+                  const isVideo = isVideoFile(media);
                   const thumbnailSrc = isYouTube
                     ? `https://img.youtube.com/vi/${getYouTubeId(
                         media
                       )}/hqdefault.jpg`
-                    : isMP4
-                    ? media // video will show frame as preview
-                    : media;
+                    : mediaUrl(media);
 
                   return (
-                    <Box
+                    <ButtonBase
                       key={index}
+                      aria-label={`Open ${isYouTube || isVideo ? "video" : "image"} ${index + 1} of ${mediaList.length}`}
                       sx={{
                         position: "relative",
                         width: 100,
                         height: 60,
                         borderRadius: "10px",
                         overflow: "hidden",
-                        cursor: "pointer",
                         border: "2px solid rgba(255,255,255,0.2)",
                         transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                        "&:hover": {
+                        "&:hover, &:focus-visible": {
                           transform: "scale(1.1)",
                           boxShadow: "0 4px 20px rgba(0,0,0,0.4)",
                         },
                       }}
-                      onClick={() => openFullscreen(mediaList[index])}
+                      onClick={() => setViewerIndex(index)}
                     >
-                      {isMP4 ? (
+                      {isVideo ? (
                         <Box
                           component="video"
-                          src={media}
+                          src={thumbnailSrc}
                           muted
                           playsInline
                           preload="metadata"
@@ -276,7 +246,9 @@ const ProjectPage = () => {
                         <Box
                           component="img"
                           src={thumbnailSrc}
-                          alt={`Thumbnail ${index}`}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
                           sx={{
                             width: "100%",
                             height: "100%",
@@ -285,7 +257,7 @@ const ProjectPage = () => {
                         />
                       )}
 
-                      {(isYouTube || isMP4) && (
+                      {(isYouTube || isVideo) && (
                         <Box
                           sx={{
                             position: "absolute",
@@ -304,7 +276,7 @@ const ProjectPage = () => {
                           <PlayIcon sx={{ fontSize: 24 }} />
                         </Box>
                       )}
-                    </Box>
+                    </ButtonBase>
                   );
                 })}
               </Box>
@@ -320,6 +292,7 @@ const ProjectPage = () => {
                   fontSize: "1.1rem",
                   lineHeight: 1.8,
                   color: "rgba(255, 255, 255, 0.9)",
+                  whiteSpace: "pre-line",
                 }}
               >
                 {project.longDescription}
@@ -387,7 +360,14 @@ const ProjectPage = () => {
                     glowVariant="primary"
                     startIcon={<GitHubIcon />}
                     sx={{ px: 3 }}
-                    onClick={() => handleClick("project_github")}
+                    href={project.github}
+                    {...externalLink}
+                    onClick={() =>
+                      logAction("project_github", {
+                        projectId: project.id,
+                        projectName: project.name,
+                      })
+                    }
                   >
                     GitHub
                   </GlowButton>
@@ -397,7 +377,14 @@ const ProjectPage = () => {
                     glowVariant="secondary"
                     startIcon={<LaunchIcon />}
                     sx={{ px: 3 }}
-                    onClick={() => handleClick("project_preview")}
+                    href={project.preview}
+                    {...externalLink}
+                    onClick={() =>
+                      logAction("project_preview", {
+                        projectId: project.id,
+                        projectName: project.name,
+                      })
+                    }
                   >
                     Preview
                   </GlowButton>
@@ -419,131 +406,119 @@ const ProjectPage = () => {
         </Box>
       </Fade>
 
-      {/* Fullscreen Image Modal */}
-      {fullscreenImage && (
+      {/* Fullscreen media viewer (Modal handles focus trap, Escape and scroll lock) */}
+      <Modal
+        open={viewerMedia !== null}
+        onClose={() => setViewerIndex(null)}
+        aria-label={`${project.name} media viewer`}
+        slotProps={{ backdrop: { sx: { bgcolor: "black" } } }}
+      >
         <Box
+          onKeyDown={handleViewerKeyDown}
+          onClick={() => setViewerIndex(null)}
           sx={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100vh",
-            bgcolor: "rgba(0, 0, 0, 1)",
+            inset: 0,
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            zIndex: 9999,
-            cursor: "pointer",
+            outline: "none",
           }}
-          onClick={closeFullscreen}
         >
-          {/* Close Button */}
           <IconButton
-            sx={{
-              position: "absolute",
-              top: 20,
-              right: 20,
-              color: "white",
-              bgcolor: "rgba(0, 0, 0, 0.5)",
-              "&:hover": { bgcolor: "rgba(0, 0, 0, 0.7)" },
-              zIndex: 10001,
-            }}
-            onClick={closeFullscreen}
+            aria-label="Close viewer"
+            sx={{ ...overlayButtonSx, top: 20, right: 20 }}
+            onClick={() => setViewerIndex(null)}
           >
             <Close />
           </IconButton>
 
-          {/* Previous Button */}
           {mediaList.length > 1 && (
-            <IconButton
-              sx={{
-                position: "absolute",
-                left: 20,
-                top: "50%",
-                transform: "translateY(-50%)",
-                color: "white",
-                bgcolor: "rgba(0, 0, 0, 0.5)",
-                "&:hover": { bgcolor: "rgba(0, 0, 0, 0.7)" },
-                zIndex: 10001,
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-                goToPrevImage();
-              }}
-            >
-              <ArrowBackIos />
-            </IconButton>
+            <>
+              <IconButton
+                aria-label="Previous"
+                sx={{
+                  ...overlayButtonSx,
+                  left: 20,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  step(-1);
+                }}
+              >
+                <ArrowBackIos />
+              </IconButton>
+              <IconButton
+                aria-label="Next"
+                sx={{
+                  ...overlayButtonSx,
+                  right: 20,
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  step(1);
+                }}
+              >
+                <ArrowForwardIos />
+              </IconButton>
+            </>
           )}
 
-          {/* Next Button */}
-          {mediaList.length > 1 && (
-            <IconButton
-              sx={{
-                position: "absolute",
-                right: 20,
-                top: "50%",
-                transform: "translateY(-50%)",
-                color: "white",
-                bgcolor: "rgba(0, 0, 0, 0.5)",
-                "&:hover": { bgcolor: "rgba(0, 0, 0, 0.7)" },
-                zIndex: 10001,
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-                goToNextImage();
-              }}
-            >
-              <ArrowForwardIos />
-            </IconButton>
-          )}
-
-          {/* Main Image */}
-
-          {fullscreenImage.endsWith(".mp4") ? (
-            <Box
-              component="video"
-              src={fullscreenImage}
-              controls
-              autoPlay
-              sx={{
-                maxWidth: "90vw",
-                maxHeight: "90vh",
-                backgroundColor: "black",
-              }}
-              onClick={(e) => e.stopPropagation()}
-            />
-          ) : isYouTubeLink(fullscreenImage) ? (
-            <Box
-              component="iframe"
-              src={`https://www.youtube.com/embed/${getYouTubeId(
-                fullscreenImage
-              )}?autoplay=1`}
-              allow="autoplay; fullscreen"
-              frameBorder="0"
-              sx={{
-                width: "90vw",
-                height: "50vw",
-                maxHeight: "90vh",
-              }}
-              onClick={(e) => e.stopPropagation()}
-            />
-          ) : (
-            <Box
-              component="img"
-              src={fullscreenImage}
-              alt="Fullscreen view"
-              sx={{
-                maxWidth: "90vw",
-                maxHeight: "90vh",
-                objectFit: "contain",
-              }}
-              onClick={(e) => e.stopPropagation()}
-            />
-          )}
+          {viewerMedia &&
+            (isVideoFile(viewerMedia) ? (
+              <Box
+                component="video"
+                key={viewerMedia}
+                src={mediaUrl(viewerMedia)}
+                controls
+                autoPlay
+                sx={{
+                  maxWidth: "90vw",
+                  maxHeight: "90vh",
+                  backgroundColor: "black",
+                }}
+                onClick={(e) => e.stopPropagation()}
+              />
+            ) : isYouTubeLink(viewerMedia) ? (
+              <Box
+                component="iframe"
+                key={viewerMedia}
+                title={`${project.name} video`}
+                src={`https://www.youtube.com/embed/${getYouTubeId(
+                  viewerMedia
+                )}?autoplay=1`}
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                sx={{
+                  border: 0,
+                  width: "90vw",
+                  height: "50vw",
+                  maxHeight: "90vh",
+                }}
+                onClick={(e) => e.stopPropagation()}
+              />
+            ) : (
+              <Box
+                component="img"
+                src={mediaUrl(viewerMedia)}
+                alt={`${project.name} ${viewerIndex! + 1} of ${mediaList.length}`}
+                sx={{
+                  maxWidth: "90vw",
+                  maxHeight: "90vh",
+                  objectFit: "contain",
+                }}
+                onClick={(e) => e.stopPropagation()}
+              />
+            ))}
 
           {/* Image Counter */}
-          {mediaList.length > 1 && (
+          {mediaList.length > 1 && viewerIndex !== null && (
             <Box
+              aria-live="polite"
               sx={{
                 position: "absolute",
                 bottom: 20,
@@ -554,16 +529,15 @@ const ProjectPage = () => {
                 px: 2,
                 py: 1,
                 borderRadius: 1,
-                zIndex: 10001,
               }}
             >
               <Typography variant="body2">
-                {currentImageIndex + 1} / {mediaList.length}
+                {viewerIndex + 1} / {mediaList.length}
               </Typography>
             </Box>
           )}
         </Box>
-      )}
+      </Modal>
     </Container>
   );
 };

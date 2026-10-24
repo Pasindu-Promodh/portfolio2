@@ -3,72 +3,77 @@ import {
   Box,
   Typography,
   Container,
-  Grid,
   Chip,
   useTheme,
   Slide,
   Fade,
+  Fab,
+  Zoom,
 } from "@mui/material";
 import {
   CheckCircleOutline,
   Construction,
   Home as HomeIcon,
 } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { Fab, Zoom } from "@mui/material";
+import { Link as RouterLink, useSearchParams } from "react-router-dom";
 import { GlowButton, AnimatedProjectCard } from "../theme";
+import { useRouterLink } from "../components/useRouterLink";
 
 //data
-import projects from "../data/projects.json";
-import tags from "../data/categories.json";
+import {
+  projects,
+  categories as tags,
+  ALL_PROJECTS,
+  mediaUrl,
+} from "../data/projects";
 import { logAction } from "../Analytics/logger";
+
+const tagCounts = Object.fromEntries(
+  tags.map((tag) => [
+    tag,
+    projects.filter((p) => tag === ALL_PROJECTS || p.category === tag).length,
+  ])
+);
 
 const ProjectsPage = () => {
   const currentTheme = useTheme();
-  const navigate = useNavigate();
-  const [filter, setFilter] = useState("All Projects");
+  const homeLink = useRouterLink("/");
+  // Filter lives in the URL so it survives visiting a project and coming back.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoryParam = searchParams.get("category");
+  const filter =
+    categoryParam && tags.includes(categoryParam) ? categoryParam : ALL_PROJECTS;
   const [loaded, setLoaded] = useState(false);
   const [showScroll, setShowScroll] = useState(false);
 
   useEffect(() => {
-    // setLoaded(false);
-    // const timer = setTimeout(() => setLoaded(true), 50);
-    // return () => clearTimeout(timer);
-    window.scrollTo(0, 0);
     setLoaded(true);
-  }, [filter]);
-
-  useEffect(() => {
     logAction("projects");
+
     const handleScroll = () => {
-      setShowScroll(window.pageYOffset > 300);
+      setShowScroll(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-    
   }, []);
+
+  const setFilter = (tag: string) => {
+    setSearchParams(tag === ALL_PROJECTS ? {} : { category: tag }, {
+      replace: true,
+      preventScrollReset: true,
+    });
+    window.scrollTo(0, 0);
+  };
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const filteredProjects = projects.filter(
-    (p) => filter === "All Projects" || p.category === filter
+    (p) => filter === ALL_PROJECTS || p.category === filter
   );
-
-  const gotoPage = (page: string, id?: number, scrollPos?: number) => {
-    const url = id ? `${page}/${id}` : page;
-    navigate(url, { state: { scrollPos } });
-  };
-
-  const tagCounts = tags.reduce((acc, tag) => {
-    acc[tag] = projects.filter(
-      (p) => tag === "All Projects" || p.category === tag
-    ).length;
-    return acc;
-  }, {} as Record<string, number>);
 
   return (
     <Container
@@ -82,6 +87,7 @@ const ProjectsPage = () => {
         pb: { xs: 8, sm: 8 },
       }}
     >
+      <title>Projects | Pasindu Promod</title>
       <Fade in={loaded} timeout={1000}>
         <Box>
           {/* Back to Home - slide down */}
@@ -96,7 +102,7 @@ const ProjectsPage = () => {
               <GlowButton
                 glowVariant="secondary"
                 startIcon={<HomeIcon />}
-                onClick={() => gotoPage("/")}
+                {...homeLink}
                 sx={{
                   px: 3,
                 }}
@@ -110,6 +116,7 @@ const ProjectsPage = () => {
           <Slide direction="left" in={loaded} timeout={700}>
             <Typography
               variant="h3"
+              component="h1"
               sx={{
                 color: "white",
                 fontWeight: 700,
@@ -142,6 +149,7 @@ const ProjectsPage = () => {
                 <GlowButton
                   key={tag}
                   glowVariant={filter === tag ? "primary" : "secondary"}
+                  aria-pressed={filter === tag}
                   onClick={() => setFilter(tag)}
                   sx={{
                     textTransform: "none",
@@ -161,9 +169,7 @@ const ProjectsPage = () => {
 
           {/* Projects Grid */}
           <Slide direction="up" in={loaded} timeout={1000}>
-            <Grid
-              container
-              spacing={4}
+            <Box
               sx={{
                 display: "grid",
                 gridTemplateColumns: {
@@ -174,8 +180,8 @@ const ProjectsPage = () => {
                 gap: 4,
               }}
             >
-              {loaded &&
-                filteredProjects.map((project, index) => (
+              {/* Rendered on first paint so back-navigation can restore scroll. */}
+              {filteredProjects.map((project, index) => (
                   <Box
                     key={project.id}
                     sx={{
@@ -183,123 +189,134 @@ const ProjectsPage = () => {
                       justifyContent: "center",
                     }}
                   >
-                    <AnimatedProjectCard
-                      delay={index * 0.1}
-                      onClick={() => gotoPage("/project", project.id)}
-                      sx={{ cursor: "pointer" }}
+                    <Box
+                      component={RouterLink}
+                      to={`/project/${project.id}`}
+                      state={{ fromList: true }}
+                      sx={{
+                        display: "block",
+                        color: "inherit",
+                        textDecoration: "none",
+                        borderRadius: "20px",
+                        "&:focus-visible": {
+                          outline: "3px solid white",
+                          outlineOffset: 4,
+                        },
+                      }}
                     >
-                      <Box
-                        component="img"
-                        src={project.image}
-                        alt={project.name}
-                        sx={{
-                          width: "100%",
-                          height: { xs: 160, sm: 180 },
-                          objectFit: "cover",
-                          borderRadius: "15px",
-                          mb: 2,
-                          boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
-                        }}
-                      />
+                      <AnimatedProjectCard delay={index * 0.1}>
+                        <Box
+                          component="img"
+                          src={mediaUrl(project.image)}
+                          alt={project.name}
+                          loading="lazy"
+                          decoding="async"
+                          sx={{
+                            width: "100%",
+                            height: { xs: 160, sm: 180 },
+                            objectFit: "cover",
+                            borderRadius: "15px",
+                            mb: 2,
+                            boxShadow: "0 4px 15px rgba(0,0,0,0.2)",
+                          }}
+                        />
 
-                      <Typography
-                        variant="h6"
-                        sx={{ color: "white", fontWeight: 600, mb: 1.5 }}
-                      >
-                        {project.name}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "rgba(255, 255, 255, 0.8)",
-                          mb: 2,
-                          lineHeight: 1.5,
-                          flexGrow: 1,
-                          overflow: "hidden",
-                        }}
-                      >
-                        {project.description}
-                      </Typography>
-                      <Box
-                        sx={{
-                          mb: 2,
-                          display: "flex",
-                          flexWrap: "wrap",
-                          justifyContent: "center",
-                          gap: 1,
-                        }}
-                      >
-                        {project.techStack.map((tech) => (
-                          <Chip
-                            key={tech}
-                            label={tech}
-                            size="small"
-                            sx={{
-                              backgroundColor: "rgba(255, 255, 255, 0.15)",
-                              color: "rgba(255, 255, 255, 0.9)",
-                              fontWeight: 500,
-                              fontSize: "0.75rem",
-                            }}
-                          />
-                        ))}
-                      </Box>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: "rgba(255, 255, 255, 0.7)",
-                          display: "flex",
-                          alignItems: "center",
-                          gap: 1,
-                        }}
-                      >
-                        {project.status === "Completed" ? (
-                          <CheckCircleOutline
-                            sx={{
-                              fontSize: "1rem",
-                              color:
-                                currentTheme.palette.success?.light ||
-                                "#4CAF50",
-                            }}
-                          />
-                        ) : (
-                          <Construction
-                            sx={{
-                              fontSize: "1rem",
-                              color:
-                                currentTheme.palette.warning?.light ||
-                                "#FFC107",
-                            }}
-                          />
-                        )}
-                        {project.status}
-                      </Typography>
-                    </AnimatedProjectCard>
+                        <Typography
+                          variant="h6"
+                          component="h2"
+                          sx={{ color: "white", fontWeight: 600, mb: 1.5 }}
+                        >
+                          {project.name}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "rgba(255, 255, 255, 0.8)",
+                            mb: 2,
+                            lineHeight: 1.5,
+                            flexGrow: 1,
+                            overflow: "hidden",
+                          }}
+                        >
+                          {project.description}
+                        </Typography>
+                        <Box
+                          sx={{
+                            mb: 2,
+                            display: "flex",
+                            flexWrap: "wrap",
+                            justifyContent: "center",
+                            gap: 1,
+                          }}
+                        >
+                          {project.techStack.map((tech) => (
+                            <Chip
+                              key={tech}
+                              label={tech}
+                              size="small"
+                              sx={{
+                                backgroundColor: "rgba(255, 255, 255, 0.15)",
+                                color: "rgba(255, 255, 255, 0.9)",
+                                fontWeight: 500,
+                                fontSize: "0.75rem",
+                              }}
+                            />
+                          ))}
+                        </Box>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "rgba(255, 255, 255, 0.7)",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 1,
+                          }}
+                        >
+                          {project.status === "Completed" ? (
+                            <CheckCircleOutline
+                              sx={{
+                                fontSize: "1rem",
+                                color:
+                                  currentTheme.palette.success?.light ||
+                                  "#4CAF50",
+                              }}
+                            />
+                          ) : (
+                            <Construction
+                              sx={{
+                                fontSize: "1rem",
+                                color:
+                                  currentTheme.palette.warning?.light ||
+                                  "#FFC107",
+                              }}
+                            />
+                          )}
+                          {project.status}
+                        </Typography>
+                      </AnimatedProjectCard>
+                    </Box>
                   </Box>
                 ))}
-            </Grid>
+            </Box>
           </Slide>
         </Box>
       </Fade>
       <Zoom in={showScroll}>
-        <Box
+        <Fab
+          color="primary"
+          size="medium"
+          aria-label="scroll back to top"
           onClick={scrollToTop}
-          role="presentation"
           sx={{
+            boxShadow: 4,
             position: "fixed",
             bottom: { xs: 24, sm: 32 },
             right: { xs: 24, sm: 32 },
             zIndex: 1500,
           }}
         >
-          <Fab
-            color="primary"
-            size="medium"
-            aria-label="scroll back to top"
-            sx={{ boxShadow: 4 }}
-          >
-            <KeyboardArrowUpIcon />
-          </Fab>
-        </Box>
+          <KeyboardArrowUpIcon />
+        </Fab>
       </Zoom>
     </Container>
   );

@@ -1,0 +1,49 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Only this Google account can read or delete analytics (portfolio-dashboard).
+    function isOwner() {
+      return request.auth != null
+        && request.auth.token.email == "pasindugunathilaka96@gmail.com"
+        && request.auth.token.email_verified == true;
+    }
+
+    function optionalString(data, field, maxLen) {
+      return !(field in data) || (data[field] is string && data[field].size() <= maxLen);
+    }
+
+    match /visitors/{visitorId} {
+      allow read, delete: if isOwner();
+
+      // Public site registers a visitor once. No public get/list/update.
+      allow create: if visitorId.size() <= 64
+        && request.resource.data.keys().hasOnly(["id", "firstVisit"])
+        && request.resource.data.id == visitorId
+        && request.resource.data.firstVisit == request.time;
+
+      match /logs/{logId} {
+        allow read, delete: if isOwner();
+
+        allow create: if exists(/databases/$(database)/documents/visitors/$(visitorId))
+          && request.resource.data.keys().hasOnly(["action", "timestamp", "projectId", "projectName"])
+          && request.resource.data.action is string
+          && request.resource.data.action.size() <= 32
+          && request.resource.data.timestamp == request.time
+          && (!("projectId" in request.resource.data) || request.resource.data.projectId is int)
+          && optionalString(request.resource.data, "projectName", 100);
+      }
+    }
+
+    // Dashboard reads all logs with a single collection-group query.
+    match /{path=**}/logs/{logId} {
+      allow read: if isOwner();
+    }
+
+    // Everything else (including the function's email quota docs) is server-only.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

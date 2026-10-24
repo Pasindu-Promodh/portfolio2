@@ -13,59 +13,43 @@ import {
 import { Download, Code, Email } from "@mui/icons-material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { useNavigate } from "react-router-dom";
 import { GlassCard, GlowButton } from "../theme";
+import { useRouterLink } from "../components/useRouterLink";
 
 //data
 import skills from "../data/skills.json";
 import { logAction } from "../Analytics/logger";
 
+const EMAIL = "pasindugunathilaka96@gmail.com";
+const LINKEDIN_URL = "https://www.linkedin.com/in/pasindu-promod/";
+const GITHUB_URL = "https://github.com/Pasindu-Promodh";
+const RESUME_URL =
+  "https://docs.google.com/document/d/18qbOsxnD67dqUryTHZT6eEeCYXkmpdGmd_dhnUAsxYQ/export?format=pdf";
+
+const externalLink = { target: "_blank", rel: "noopener noreferrer" } as const;
+
 // Main Home component
 const HomePage: React.FC = () => {
   const currentTheme = useTheme();
-  const navigate = useNavigate();
+  const projectsLink = useRouterLink("/projects");
 
   const [loaded, setLoaded] = useState(false);
-  const [copied, setCopied] = React.useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     setLoaded(true);
     logAction("home");
   }, []);
 
-  const gotoPage = (page: string, id?: number, scrollPos?: number) => {
-    const url = id ? `${page}/${id}` : page;
-    navigate(url, { state: { scrollPos } });
-  };
-
-  const handleClick = (action: string) => {
-    logAction(action);
-    switch (action) {
-      case "email":
-        navigator.clipboard.writeText("pasindugunathilaka96@gmail.com");
-        setCopied(true);
-        // logAction("Email Copied");
-        break;
-      case "linkedin":
-        // logAction("LinkedIn Visited");
-        window.open(
-          "https://www.linkedin.com/in/pasindu-promod/",
-          "_blank"
-        );
-        break;
-      case "github":
-        // logAction("GitHub Visited");
-        window.open("https://github.com/Pasindu-Promodh", "_blank");
-        break;
-      case "resume":
-        // logAction("Resume Downloaded");
-        window.open(
-          "https://docs.google.com/document/d/18qbOsxnD67dqUryTHZT6eEeCYXkmpdGmd_dhnUAsxYQ/export?format=pdf",
-          "_blank"
-        );
-        break;
-      default:
-        console.warn("Unknown action:", action);
+  // Copies the address; falls back to the mailto: link if the clipboard is unavailable.
+  const handleEmailClick = async (event: React.MouseEvent) => {
+    event.preventDefault();
+    logAction("email");
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+    } catch {
+      window.location.href = `mailto:${EMAIL}`;
     }
   };
 
@@ -78,6 +62,7 @@ const HomePage: React.FC = () => {
         px: { xs: 2, sm: 3, md: 4 },
       }}
     >
+      <title>Pasindu Promod | Game Developer & Software Engineer</title>
       <Box
         sx={{
           display: "flex",
@@ -200,8 +185,9 @@ const HomePage: React.FC = () => {
                 }}
               >
                 <IconButton
-                  aria-label="email"
-                  onClick={() => handleClick("email")}
+                  aria-label="Copy email address"
+                  href={`mailto:${EMAIL}`}
+                  onClick={handleEmailClick}
                   sx={{
                     color: "rgba(255, 255, 255, 0.7)",
                     "&:hover": {
@@ -214,8 +200,10 @@ const HomePage: React.FC = () => {
                 </IconButton>
 
                 <IconButton
-                  aria-label="linkedin"
-                  onClick={() => handleClick("linkedin")}
+                  aria-label="LinkedIn"
+                  href={LINKEDIN_URL}
+                  {...externalLink}
+                  onClick={() => logAction("linkedin")}
                   sx={{
                     color: "rgba(255, 255, 255, 0.7)",
                     "&:hover": {
@@ -230,8 +218,10 @@ const HomePage: React.FC = () => {
                 </IconButton>
 
                 <IconButton
-                  aria-label="github"
-                  onClick={() => handleClick("github")}
+                  aria-label="GitHub"
+                  href={GITHUB_URL}
+                  {...externalLink}
+                  onClick={() => logAction("github")}
                   sx={{
                     color: "rgba(255, 255, 255, 0.7)",
                     "&:hover": {
@@ -260,7 +250,9 @@ const HomePage: React.FC = () => {
                 <GlowButton
                   glowVariant="primary"
                   startIcon={<Download />}
-                  onClick={() => handleClick("resume")}
+                  href={RESUME_URL}
+                  {...externalLink}
+                  onClick={() => logAction("resume")}
                 >
                   Download Resume
                 </GlowButton>
@@ -268,7 +260,7 @@ const HomePage: React.FC = () => {
                 <GlowButton
                   glowVariant="secondary"
                   startIcon={<Code />}
-                  onClick={() => gotoPage("/projects")}
+                  {...projectsLink}
                 >
                   View Projects
                 </GlowButton>
@@ -306,8 +298,8 @@ const HomePage: React.FC = () => {
                       boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
                       background: `linear-gradient(45deg, ${currentTheme.palette.primary.main}, ${currentTheme.palette.secondary.main})`,
                     }}
-                    src="./profile.jpeg"
-                    alt="Profile"
+                    src={`${import.meta.env.BASE_URL}profile.jpeg`}
+                    alt="Pasindu Promod"
                   >
                     P
                   </Avatar>

@@ -1,60 +1,10 @@
-// import * as functions from "firebase-functions";
-// import * as nodemailer from "nodemailer";
-// import cors from "cors";
-
-// const corsHandler = cors({ origin: true });
-
-// const gmailEmail = process.env.VITE_GMAIL_EMAIL;
-// const gmailPass = process.env.VITE_GMAIL_PASSWORD;
-
-// if (!gmailEmail || !gmailPass) {
-//   throw new Error("VITE_GMAIL_EMAIL and VITE_GMAIL_PASSWORD must be set in the environment variables.");
-// }
-
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: gmailEmail,
-//     pass: gmailPass,
-//   },
-// });
-
-// export const sendVisitorEmail = functions.https.onRequest((req, res) => {
-//   corsHandler(req, res, async () => {
-//     if (req.method !== "POST") {
-//       res.status(405).send("Only POST requests are allowed");
-//       return;
-//     }
-
-//     try {
-//       const { id } = typeof req.body === "string" ? JSON.parse(req.body) : req.body;
-
-//       if (!id || typeof id !== "string") {
-//         res.status(400).send("Missing or invalid 'id' field");
-//         return;
-//       }
-
-//       const mailOptions = {
-//         from: gmailEmail,
-//         to: gmailEmail,
-//         subject: "📬 New Portfolio Visitor",
-//         text: `A new visitor with ID: ${id} just landed on your portfolio.\n\nhttps://pasindu-promodh.github.io/portfolio-dashboard/`,
-//       };
-
-//       await transporter.sendMail(mailOptions);
-//       res.status(200).send("Email sent successfully");
-//     } catch (err) {
-//       console.error("Email send error:", err);
-//       res.status(500).send("Error sending email");
-//     }
-//   });
-// });
-
-
-
-import { onDocumentCreated } from "firebase-functions/v2/firestore";
-import { defineSecret } from "firebase-functions/params";
+import {onDocumentCreated} from "firebase-functions/v2/firestore";
+import {defineSecret} from "firebase-functions/params";
+import {initializeApp} from "firebase-admin/app";
+import {getFirestore} from "firebase-admin/firestore";
 import nodemailer from "nodemailer";
+
+initializeApp();
 
 /**
  * Secrets (set via Firebase CLI)
@@ -64,9 +14,30 @@ import nodemailer from "nodemailer";
 const GMAIL_EMAIL = defineSecret("GMAIL_EMAIL");
 const GMAIL_PASSWORD = defineSecret("GMAIL_PASSWORD");
 
+/** Hard cap so a flood of fake visitor docs can't exhaust the Gmail quota. */
+const MAX_EMAILS_PER_DAY = 50;
+
 /**
- * Firestore trigger: emails only when a new visitor doc is created.
- * Not publicly callable, so it can't be spammed like an HTTPS endpoint.
+ * Atomically reserves one email slot for today (UTC).
+ * @return {Promise<number>} the slot number, or 0 when today's cap is reached.
+ */
+async function reserveEmailSlot(): Promise<number> {
+  const db = getFirestore();
+  const day = new Date().toISOString().slice(0, 10);
+  const ref = db.doc(`meta/emailQuota_${day}`);
+
+  return db.runTransaction(async (tx) => {
+    const sent = ((await tx.get(ref)).get("sent") as number | undefined) ?? 0;
+    if (sent >= MAX_EMAILS_PER_DAY) return 0;
+    tx.set(ref, {sent: sent + 1}, {merge: true});
+    return sent + 1;
+  });
+}
+
+/**
+ * Firestore trigger: emails when a new visitor doc is created.
+ * Visitor creation is public, so abuse is limited by Firestore rules,
+ * App Check, and the daily cap above.
  */
 export const onNewVisitor = onDocumentCreated(
   {
@@ -77,8 +48,14 @@ export const onNewVisitor = onDocumentCreated(
   },
   async (event) => {
     const id = event.params.id;
-    const gmailEmail = GMAIL_EMAIL.value();
 
+    const slot = await reserveEmailSlot();
+    if (!slot) {
+      console.warn(`Daily email cap reached, skipping visitor ${id}`);
+      return;
+    }
+
+    const gmailEmail = GMAIL_EMAIL.value();
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -86,6 +63,11 @@ export const onNewVisitor = onDocumentCreated(
         pass: GMAIL_PASSWORD.value(),
       },
     });
+
+    const capNote = slot === MAX_EMAILS_PER_DAY ?
+      `\n\nDaily limit of ${MAX_EMAILS_PER_DAY} emails reached; ` +
+        "further visitors today are only shown in the dashboard." :
+      "";
 
     try {
       await transporter.sendMail({
@@ -96,7 +78,7 @@ export const onNewVisitor = onDocumentCreated(
 
 Visitor ID: ${id}
 
-Dashboard:https://pasindu-promodh.github.io/portfolio-dashboard/`,
+Dashboard: https://pasindu-promodh.github.io/portfolio-dashboard/${capNote}`,
       });
     } catch (err) {
       console.error("Send mail error:", err);

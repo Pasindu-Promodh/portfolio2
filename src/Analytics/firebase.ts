@@ -1,6 +1,4 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-import { getFunctions } from "firebase/functions";
+import type { Firestore } from "firebase/firestore/lite";
 
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
@@ -12,7 +10,30 @@ const firebaseConfig = {
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
-export const functions = getFunctions(app);
+let dbPromise: Promise<Firestore> | undefined;
+
+// Firebase is loaded on demand so it stays out of the initial bundle.
+// Firestore Lite is enough here: the site only does one-off writes.
+export function getDb(): Promise<Firestore> {
+  dbPromise ??= (async () => {
+    const [{ initializeApp }, { getFirestore }] = await Promise.all([
+      import("firebase/app"),
+      import("firebase/firestore/lite"),
+    ]);
+    const app = initializeApp(firebaseConfig);
+
+    const recaptchaKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
+    if (recaptchaKey) {
+      const { initializeAppCheck, ReCaptchaV3Provider } = await import(
+        "firebase/app-check"
+      );
+      initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider(recaptchaKey),
+        isTokenAutoRefreshEnabled: true,
+      });
+    }
+
+    return getFirestore(app);
+  })();
+  return dbPromise;
+}
